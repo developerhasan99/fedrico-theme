@@ -1,0 +1,296 @@
+{% comment %}
+  product-media-gallery: Swiper slider with thumbnails (classic) or the editorial stack
+  when the calling section has `layout: editorial` (main-product on product.quantity-breakers).
+  Callers without a section (templates/product.quick-add.liquid) get ids from product.id.
+  Image set logic (local_image currency images, bundle_usd fallback, shared marketing images) is unchanged.
+{% endcomment %}
+{% if product == blank %}
+  {% assign product = product_param %}
+{% endif %}
+
+{% liquid
+  # Products tagged 'own_gallery' show only their own images, no marketing images
+  unless product.tags contains 'own_gallery'
+    assign marketing_images = shop.metaobjects['marketing_images']['english'].images.value
+  endunless
+
+  assign gid = section.id | default: product.id
+  assign pm_editorial = false
+  if section.settings.layout == 'editorial'
+    assign pm_editorial = true
+  endif
+
+  # Which product images make the gallery: 'all', the visitor's currency bundle image, or the USD bundle image
+  assign image_mode = 'all'
+  if product.tags contains 'local_image'
+    assign curr_currency = localization.country.iso_code | prepend: 'bundle_' | downcase
+    assign image_mode = 'bundle_usd'
+    for image in product.images
+      assign img_alt = image.alt | downcase
+      if img_alt contains 'bundle_' and img_alt == curr_currency
+        assign image_mode = 'bundle_currency'
+        break
+      endif
+    endfor
+  endif
+
+  if pm_editorial
+    assign slide_class = 'productSwiperImage swiper-slide'
+    assign thumb_class = 'productThumbnail swiper-slide'
+  else
+    assign slide_class = 'productSwiperImage swiper-slide md:rounded-lg'
+    assign thumb_class = 'productThumbnail swiper-slide slide max-w-16 md:max-w-24 opacity-70 border-2 border-solid border-gray-200 rounded-lg cursor-pointer'
+  endif
+  assign slide_sizes = '(min-width: 990px) 50vw, 100vw'
+  assign slide_index = 0
+%}
+
+<div id="pm-gallery-{{ gid }}" class="{% if pm_editorial %}pm-gallery{% else %}sticky top-6{% endif %}">
+  <div class="{% if pm_editorial %}pm-gallery__row{% else %}flex -mx-[15px] md:mx-0{% endif %}">
+    {%- comment -%} Fragrance line badge (oil % + longevity tooltip, snippets/fm-line.liquid); products without a line keep the scent match badge {%- endcomment -%}
+    {%- capture pm_tag_class -%}{% if pm_editorial %}pm-gallery__tag{% else %}absolute top-1 left-1 z-10{% endif %}{%- endcapture -%}
+    {%- capture pm_scent_badge -%}
+      <div
+        class="doftmatch-tooltip pm-badge {{ pm_tag_class }}"
+        tabindex="0"
+        aria-describedby="doftmatch-tooltip-{{ product.id }}">
+        ≈95% Scent match ⓘ
+        <span
+          id="doftmatch-tooltip-{{ product.id }}"
+          class="doftmatch-tooltip__content"
+          role="tooltip">
+          Based on verified customer ratings of scent similarity.
+        </span>
+      </div>
+    {%- endcapture -%}
+    {%- render 'fm-line', product: product, context: 'pdp', class: pm_tag_class, fallback: pm_scent_badge -%}
+    <div id="productSwiper-{{ gid }}" class="swiper {% unless pm_editorial or product.template_suffix == 'draft-three' %}md:w-[calc(100%-144px)]{% endunless %}">
+      <div class="swiper-wrapper">
+        {%- for image in product.images -%}
+          {%- liquid
+            assign show_image = true
+            if image_mode != 'all'
+              assign img_alt = image.alt | downcase
+              assign show_image = false
+              if image_mode == 'bundle_currency' and img_alt contains 'bundle_' and img_alt == curr_currency
+                assign show_image = true
+              elsif image_mode == 'bundle_usd' and img_alt contains 'bundle_usd'
+                assign show_image = true
+              endif
+            endif
+          -%}
+          {%- if show_image -%}
+            {%- assign slide_index = slide_index | plus: 1 -%}
+            <img
+              src="{{ image | image_url: width: 1500 }}"
+              srcset="{{ image | image_url: width: 750 }} 750w, {{ image | image_url: width: 1100 }} 1100w, {{ image | image_url: width: 1500 }} 1500w"
+              sizes="{{ slide_sizes }}"
+              alt="{{ image.alt | escape }}"
+              height="{{ image.height }}"
+              width="{{ image.width }}"
+              {% if slide_index == 1 %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+              class="{{ slide_class }}">
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if marketing_images != blank -%}
+          {%- for image in marketing_images -%}
+            {%- assign slide_index = slide_index | plus: 1 -%}
+            <img
+              src="{{ image | image_url: width: 1500 }}"
+              srcset="{{ image | image_url: width: 750 }} 750w, {{ image | image_url: width: 1100 }} 1100w, {{ image | image_url: width: 1500 }} 1500w"
+              sizes="{{ slide_sizes }}"
+              alt="{{ image.alt | escape }}"
+              height="{{ image.height }}"
+              width="{{ image.width }}"
+              {% if slide_index == 1 %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+              class="{{ slide_class }} marketing_image">
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+      <div
+        data-text="text"
+        id="productSwiperPrev-{{ gid }}"
+        class="swiper-button-prev{% unless pm_editorial %} !flex bg-white !w-10 [&]:after:!text-xl [&]:after:text-gray-900{% endunless %}"></div>
+      <div
+        data-text="text"
+        id="productSwiperNext-{{ gid }}"
+        class="swiper-button-next{% unless pm_editorial %} !flex bg-white !w-10 [&]:after:!text-xl [&]:after:text-gray-900{% endunless %}"></div>
+    </div>
+    {% unless pm_editorial or product.template_suffix == 'draft-three' %}
+      <div class="w-28 lg:w-36 pl-2 [display:none] md:grid grid-rows-3 gap-2">
+        <div class="pm-gallery__trust-tile p-3 rounded-lg text-center flex flex-col items-center justify-center gap-2">
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 36 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true">
+            <path
+              d="M25.7839 9.59955C26.9413 9.59968 27.8826 10.5417 27.8826 11.6992V32.4081C27.8826 33.5656 26.9413 34.5076 25.7839 34.5078H10.2166C9.05906 34.5078 8.11694 33.5656 8.11694 32.4081V11.6992C8.11694 10.5417 9.05906 9.59955 10.2166 9.59955H25.7839ZM10.2166 10.9745C9.81711 10.9745 9.49194 11.2997 9.49194 11.6992V32.4081C9.49194 32.8076 9.81711 33.1328 10.2166 33.1328H25.7839C26.1833 33.1326 26.5085 32.8075 26.5085 32.4081V11.6992C26.5085 11.2998 26.1833 10.9747 25.7839 10.9745H10.2166Z"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="0.25" />
+            <path
+              d="M14.8928 6.0451C15.2722 6.04518 15.5803 6.35316 15.5803 6.7326V10.2873C15.5801 10.6666 15.2721 10.9737 14.8928 10.9738C14.5135 10.9738 14.2055 10.6666 14.2053 10.2873V6.7326L14.219 6.59393C14.2831 6.28076 14.5608 6.0451 14.8928 6.0451ZM21.1077 6.0451C21.487 6.04525 21.7952 6.3532 21.7952 6.7326V10.2873C21.795 10.6665 21.4869 10.9737 21.1077 10.9738C20.7283 10.9738 20.4204 10.6666 20.4202 10.2873V6.7326C20.4202 6.35311 20.7282 6.0451 21.1077 6.0451Z"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="0.25" />
+            <path
+              d="M23.8983 9.59879C24.2778 9.59879 24.5858 9.90679 24.5858 10.2863V25.3488C24.5858 28.5985 21.9536 31.2314 18.703 31.2316H17.2977C14.047 31.2316 11.414 28.5995 11.4139 25.3488V10.2863C11.4139 9.90679 11.7219 9.59879 12.1014 9.59879C12.4809 9.59886 12.7889 9.90684 12.7889 10.2863V25.3488C12.789 27.834 14.8116 29.8576 17.2977 29.8576H18.703C21.1881 29.8574 23.2118 27.8348 23.2118 25.3488V10.2863C23.2118 9.90691 23.519 9.59897 23.8983 9.59879ZM21.5653 1.49234C22.6418 1.49234 23.5193 2.36797 23.5194 3.44547V6.73257C23.5193 7.1119 23.2112 7.4199 22.8319 7.42007H13.1688C12.7894 7.42007 12.4814 7.11201 12.4813 6.73257V3.44547C12.4814 2.36898 13.3569 1.49234 14.4344 1.49234H21.5653ZM14.4344 2.86832C14.116 2.86832 13.8564 3.127 13.8563 3.44547L13.8553 6.04507H22.1434V3.44547C22.1433 3.127 21.8838 2.86832 21.5653 2.86832H14.4344Z"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="0.25" />
+            <path
+              d="M19.3611 3.76874C19.7405 3.76888 20.0486 4.07683 20.0486 4.45624C20.0485 4.83544 19.7415 5.1436 19.3611 5.14374H16.6384C16.259 5.14374 15.951 4.83566 15.9509 4.45624C15.9509 4.07675 16.2589 3.76874 16.6384 3.76874H19.3611Z"
+              fill="currentColor"
+              stroke="currentColor"
+              stroke-width="0.25" />
+          </svg>
+          <p class="m-0 leading-snug font-semibold text-xs lg:text-sm">
+            Same scent. Better price.
+          </p>
+        </div>
+        <div class="pm-gallery__trust-tile p-2 lg:px-4 rounded-lg text-center flex flex-col items-center justify-center gap-2">
+          {% render 'pm-stars', rating: 4.9, size: 14 %}
+          <p class="m-0 leading-snug font-semibold text-xs lg:text-sm">
+            Over 10,000 satisfied customers
+          </p>
+        </div>
+        <div class="pm-gallery__trust-tile p-3 rounded-lg text-center flex flex-col items-center justify-center gap-2">
+          {% render 'pm-icon', icon: 'shield', size: 28, stroke: 1.25 %}
+          <p class="m-0 leading-snug font-semibold text-xs lg:text-sm">
+            60-day money-back guarantee
+          </p>
+        </div>
+      </div>
+    {% endunless %}
+  </div>
+  <div{% if pm_editorial %} class="pm-gallery__side"{% endif %}>
+    <div id="productThumbnails-{{ gid }}" class="swiper {% if pm_editorial %}pm-gallery__thumbs{% else %}mt-4{% endif %}">
+      <div class="swiper-wrapper">
+        {%- for image in product.images -%}
+          {%- liquid
+            assign show_image = true
+            if image_mode != 'all'
+              assign img_alt = image.alt | downcase
+              assign show_image = false
+              if image_mode == 'bundle_currency' and img_alt contains 'bundle_' and img_alt == curr_currency
+                assign show_image = true
+              elsif image_mode == 'bundle_usd' and img_alt contains 'bundle_usd'
+                assign show_image = true
+              endif
+            endif
+          -%}
+          {%- if show_image -%}
+            <img
+              id="slider-thumbnail-{{ forloop.index0 }}"
+              src="{{ image | image_url: width: 150, height: 150 }}"
+              alt="{{ image.alt | escape }}"
+              height="150"
+              width="150"
+              loading="lazy"
+              class="{{ thumb_class }}" />
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if marketing_images != blank -%}
+          {%- for image in marketing_images -%}
+            <img
+              id="slider-thumbnail-{{ forloop.index0 }}"
+              src="{{ image | image_url: width: 150, height: 150 }}"
+              alt="{{ image.alt | escape }}"
+              height="150"
+              width="150"
+              loading="lazy"
+              class="{{ thumb_class }} marketing_image" />
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Swiper slider for product images with thumbnail sync.
+    // Editorial layout: Swiper only below 990px; from 990 the CSS grid stack takes over
+    // (no init at load, destroy(true, true) when the viewport crosses up, re-init when it crosses down).
+    (function () {
+      var editorial = {{ pm_editorial | json }};
+      var gallery = document.getElementById('pm-gallery-{{ gid }}');
+      var mainSwiper = null;
+      var thumbsSwiper = null;
+
+      function build() {
+        if (mainSwiper || typeof Swiper === 'undefined') return;
+
+        thumbsSwiper = new Swiper('#productThumbnails-{{ gid }}', editorial ? {
+          slidesPerView: 'auto',
+          spaceBetween: 4,
+          freeMode: true,
+          watchSlidesProgress: true,
+          watchOverflow: true,
+          direction: 'vertical',
+          slideToClickedSlide: true
+        } : {
+          slidesPerView: 5,
+          spaceBetween: 8,
+          freeMode: true,
+          watchSlidesProgress: true,
+          watchOverflow: true,
+          direction: 'horizontal',
+          slideToClickedSlide: true,
+          breakpoints: {
+            320: { slidesPerView: 4 },
+            600: { slidesPerView: 4 },
+            900: { slidesPerView: 5 }
+          }
+        });
+
+        mainSwiper = new Swiper('#productSwiper-{{ gid }}', editorial ? {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          observer: true,
+          observeParents: true,
+          thumbs: { swiper: thumbsSwiper }
+        } : {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          observer: true,
+          observeParents: true,
+          navigation: {
+            prevEl: '#productSwiperPrev-{{ gid }}',
+            nextEl: '#productSwiperNext-{{ gid }}'
+          },
+          thumbs: { swiper: thumbsSwiper },
+          breakpoints: {
+            320: { slidesPerView: 1, spaceBetween: 10 },
+            600: { slidesPerView: 1, spaceBetween: 20 },
+            800: { slidesPerView: 1, spaceBetween: 20 }
+          }
+        });
+
+        if (gallery) gallery.classList.remove('is-stacked');
+      }
+
+      function destroy() {
+        if (mainSwiper) { mainSwiper.destroy(true, true); mainSwiper = null; }
+        if (thumbsSwiper) { thumbsSwiper.destroy(true, true); thumbsSwiper = null; }
+        if (gallery) gallery.classList.add('is-stacked');
+      }
+
+      function initProductGallerySwiper() {
+        if (!editorial || !window.matchMedia) { build(); return; }
+        var mq = window.matchMedia('(min-width: 990px)');
+        function apply() { if (mq.matches) destroy(); else build(); }
+        apply();
+        if (mq.addEventListener) mq.addEventListener('change', apply);
+        else if (mq.addListener) mq.addListener(apply);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initProductGallerySwiper);
+      } else {
+        initProductGallerySwiper();
+      }
+    })();
+  </script>
+</div>

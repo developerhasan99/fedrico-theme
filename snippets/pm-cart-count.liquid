@@ -1,0 +1,13 @@
+{%- comment -%}
+  Cart item count without Bundle & Save line upgrade lines (property _bundle_per): they price bottles already counted in the bundle line.
+  Usage: {%- capture pm_count -%}{%- render 'pm-cart-count' -%}{%- endcapture -%}
+{%- endcomment -%}
+{%- liquid
+  assign pm_count = cart.item_count
+  for item in cart.items
+    if item.properties._bundle_per != blank
+      assign pm_count = pm_count | minus: item.quantity
+    endif
+  endfor
+  echo pm_count
+-%}

@@ -1,0 +1,110 @@
+{%- comment -%}
+  Fragrance line (Classic / PURE / PURE ROYAL) of a product.
+
+  Values come from the store, not the theme: Admin > Content > Metaobjects > Fragrance line
+  (fields: name, product_tag, oil, longevity, strength). Editing an entry there changes every badge
+  and every [oil] / [hours] text of that line at once.
+
+  A product belongs to the line whose Product tag it carries (exact tag, e.g. PURE ROYAL). A perfume
+  with no line tag gets the line whose Product tag is empty (Classic). Same rule as the line cards on
+  the Bundle & Save page. Products tagged "bundle" and gift cards have no line.
+
+  Accepts:
+  - product: {Object} product (required)
+  - mode: {String} 'badge' (default) or 'text'
+  - text: {String} mode 'text'. [line], [oil] and [hours] become the line's name, oil and longevity.
+          Text without a token comes back unchanged; text with a token and no line comes back empty.
+  - context: {String} mode 'badge'. 'card' (default) or 'pdp' (adds the info mark and the tooltip)
+  - class: {String} mode 'badge'. Extra classes on the badge
+  - fallback: {String} mode 'badge'. Markup to output when the product has no line (optional)
+
+  Badge texts: theme settings > Fragrance line badge (same tokens).
+
+  Usage:
+  {%- render 'fm-line', product: product, context: 'pdp', class: 'pm-gallery__tag' -%}
+  {%- render 'fm-line', product: product, mode: 'text', text: block.settings.label -%}
+{%- endcomment -%}
+{%- liquid
+  assign fl_mode = mode | default: 'badge'
+  assign fl_has_token = false
+  if text contains '[line]' or text contains '[oil]' or text contains '[hours]'
+    assign fl_has_token = true
+  endif
+
+  assign fl = nil
+  if fl_mode == 'badge' or fl_has_token
+    assign fl_default = nil
+    if product != blank and product.gift_card? == false
+      unless product.tags contains 'bundle'
+        for fl_entry in shop.metaobjects.fragrance_line.values
+          assign fl_tag = fl_entry.product_tag.value | strip
+          if fl_tag == blank
+            if fl_default == nil
+              assign fl_default = fl_entry
+            endif
+          elsif product.tags contains fl_tag
+            assign fl = fl_entry
+            break
+          endif
+        endfor
+        if fl == nil
+          assign fl = fl_default
+        endif
+      endunless
+    endif
+  endif
+
+  if fl
+    assign fl_name = fl.name.value | strip
+    assign fl_oil = fl.oil.value | strip
+    assign fl_hours = fl.longevity.value | strip
+    assign fl_strength = fl.strength.value | default: 0
+  endif
+
+  if fl_mode == 'text'
+    if fl_has_token == false
+      echo text
+    elsif fl
+      echo text | replace: '[line]', fl_name | replace: '[oil]', fl_oil | replace: '[hours]', fl_hours
+    endif
+  elsif fl == nil
+    echo fallback
+  else
+    assign fl_ctx = context | default: 'card'
+    if fl_ctx == 'pdp'
+      assign fl_label = settings.fm_line_badge_pdp | default: '[line] · [oil] perfume oil'
+    else
+      assign fl_label = settings.fm_line_badge_card | default: '[oil] perfume oil'
+    endif
+    assign fl_label = fl_label | replace: '[line]', fl_name | replace: '[oil]', fl_oil | replace: '[hours]', fl_hours | strip
+    assign fl_tip = settings.fm_line_badge_tooltip | default: '[oil] perfume oil concentration. Lasts [hours].'
+    assign fl_tip = fl_tip | replace: '[line]', fl_name | replace: '[oil]', fl_oil | replace: '[hours]', fl_hours | strip
+    assign fl_handle = fl.system.handle | default: fl_name | handleize
+  endif
+-%}
+{%- if fl_mode == 'badge' and fl -%}
+  {%- capture fl_dots -%}
+    {%- if fl_strength > 0 -%}
+      <span class="fm-line-badge__dots" aria-hidden="true">
+        {%- for d in (1..3) -%}
+          <span class="fm-line-badge__dot{% if d <= fl_strength %} is-on{% endif %}"></span>
+        {%- endfor -%}
+      </span>
+    {%- endif -%}
+  {%- endcapture -%}
+  {%- if fl_ctx == 'pdp' -%}
+    <div
+      class="doftmatch-tooltip pm-badge fm-line-badge fm-line-badge--pdp fm-line-badge--{{ fl_handle }} {{ class }}"
+      tabindex="0"
+      aria-describedby="fm-line-tip-{{ product.id }}">
+      {{- fl_dots -}}
+      <span class="fm-line-badge__text">{{ fl_label | escape }} ⓘ</span>
+      <span id="fm-line-tip-{{ product.id }}" class="doftmatch-tooltip__content" role="tooltip">{{ fl_tip | escape }}</span>
+    </div>
+  {%- else -%}
+    <span class="pm-badge fm-line-badge fm-line-badge--{{ fl_handle }} {{ class }}" title="{{ fl_tip | escape }}">
+      {{- fl_dots -}}
+      <span class="fm-line-badge__text">{{ fl_label | escape }}</span>
+    </span>
+  {%- endif -%}
+{%- endif -%}

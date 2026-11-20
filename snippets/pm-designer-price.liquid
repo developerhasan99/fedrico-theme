@@ -1,0 +1,36 @@
+{%- comment -%}
+  Designer price display. Values come in USD cents (product metafield custom.designer_price_usd × 100).
+  In the shop currency Liquid prints the final text; in other markets the <pm-designer-price> element
+  (assets/pm-designer-price.js) converts with Shopify.currency.rate and fills the text.
+  Renders with `hidden` while it has no text yet (other markets before JS, savings at or below 0), so
+  wrappers can hide their label with `:has(pm-designer-price[hidden])`.
+
+  Accepts:
+  - usd_cents {Number} designer amount in USD cents (required; nothing renders when blank or 0)
+  - minus_cents {Number} optional amount in CART currency cents to subtract (shows savings: designer − minus)
+  - strike {Boolean} wrap in <s> (struck-through designer price)
+  - class {String} optional extra class
+
+  Usage:
+  {% render 'pm-designer-price', usd_cents: 23500, strike: true %}
+  {% render 'pm-designer-price', usd_cents: total_usd, minus_cents: cart.total_price %}
+{%- endcomment -%}
+{%- liquid
+  assign dp_usd = usd_cents | default: 0 | round
+  assign dp_sub = minus_cents | default: 0 | round
+  assign dp_text = ''
+  if dp_usd > 0 and cart.currency.iso_code == shop.currency
+    assign dp_shown = dp_usd | minus: dp_sub
+    if dp_sub > 0
+      assign dp_shown = dp_shown | divided_by: 100 | times: 100
+    endif
+    if dp_shown > 0
+      assign dp_text = dp_shown | money_without_trailing_zeros
+    endif
+  endif
+-%}
+{%- if dp_usd > 0 -%}
+  <pm-designer-price class="pm-designer-price{% if class %} {{ class }}{% endif %}" data-usd="{{ dp_usd }}"{% if dp_sub > 0 %} data-minus="{{ dp_sub }}"{% endif %}{% if strike %} data-strike{% endif %}{% if dp_text == '' %} hidden{% endif %}>
+    {%- if strike -%}<s>{{ dp_text }}</s>{%- else -%}{{ dp_text }}{%- endif -%}
+  </pm-designer-price>
+{%- endif -%}

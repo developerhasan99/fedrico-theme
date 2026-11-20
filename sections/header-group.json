@@ -1,0 +1,233 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "marquee_labels_CjAgNU": {
+      "type": "marquee-labels",
+      "blocks": {
+        "label_Qg6CjC": {
+          "type": "label",
+          "disabled": true,
+          "settings": {
+            "label": "FREE SHIPPING ON ORDERS ABOVE $50",
+            "link": ""
+          }
+        },
+        "label_h4EKbX": {
+          "type": "label",
+          "settings": {
+            "label": "SAVE UPTO 50% OFF WITH OUR BUNDLES & GIFT SETS",
+            "link": ""
+          }
+        },
+        "label_yJphg9": {
+          "type": "label",
+          "settings": {
+            "label": "100% AUTHENTIC",
+            "link": ""
+          }
+        },
+        "label_nYhF3R": {
+          "type": "label",
+          "settings": {
+            "label": "EXPERT-CURATED COLLECTIONS",
+            "link": ""
+          }
+        },
+        "label_RqnDUx": {
+          "type": "label",
+          "settings": {
+            "label": "RISK-FREE 60 DAYS MONEY BACK GUARANTEE",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "label_Qg6CjC",
+        "label_h4EKbX",
+        "label_yJphg9",
+        "label_nYhF3R",
+        "label_RqnDUx"
+      ],
+      "disabled": true,
+      "name": "Marquee Labels",
+      "settings": {
+        "style": "legacy",
+        "color_scheme": "",
+        "speed": 24,
+        "separator": "•"
+      }
+    },
+    "offer_announcement_cN6pMF": {
+      "type": "offer-announcement",
+      "disabled": true,
+      "name": "Offer Announcement",
+      "settings": {
+        "background_color": "#114325",
+        "prepend_text": "Valentine Offer",
+        "link_text": "Buy 2 Get 1 Free!",
+        "append_text": "Shop Now",
+        "link": "shopify://products/federico mahora-collection"
+      }
+    },
+    "offer_timebar_xLgmJd": {
+      "type": "offer-timebar",
+      "blocks": {
+        "payment_icon_GE6fq4": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/Flag-United-States-of-America.webp",
+            "label": "US Wide"
+          }
+        },
+        "payment_icon_qP37UR": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/090e7fd71af4b4e7589642874d6cae93a0a34f77.webp",
+            "label": "Fast"
+          }
+        },
+        "payment_icon_yexejk": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/800c98d03dc73f77225bfa90300384e0370c7cff.avif",
+            "label": "Secure"
+          }
+        }
+      },
+      "block_order": [
+        "payment_icon_GE6fq4",
+        "payment_icon_qP37UR",
+        "payment_icon_yexejk"
+      ],
+      "name": "Offer Timebar",
+      "settings": {
+        "style": "minimal",
+        "color_scheme": "scheme-4",
+        "primary_color": "#173e34",
+        "secondary_color": "#dce9de",
+        "top_banner_text": "BLACK FRIDAY MADNESS",
+        "prepend_text": "UP TO 40% OFF ENTIRE CART",
+        "show_countdown": false,
+        "countdown_date": "",
+        "append_text": "",
+        "link": "shopify://collections/bestsellers",
+        "goal_line_enable": true,
+        "goal_line_markets": "",
+        "goal_line_lang": "",
+        "goal_steps": "2:25, 4:30, 6:35, 8:40",
+        "goal_bs_handle": "bundle-and-save",
+        "goal_text_empty": "Add [n] and get [pct] OFF",
+        "goal_text_step": "Add [n] and get [pct] OFF",
+        "goal_text_unlocked": "[rewards] unlocked",
+        "goal_text_done": "You get [pct] OFF",
+        "goal_label_pct": "[pct] OFF",
+        "goal_word_one": "bottle",
+        "goal_word_many": "bottles"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_menu_item_kgEd9W": {
+          "type": "mega_menu_item",
+          "settings": {
+            "label": "For Men",
+            "collection": "for-men",
+            "slider_heading": "Popular scents"
+          }
+        },
+        "mega_menu_item_PtL8ng": {
+          "type": "mega_menu_item",
+          "settings": {
+            "label": "For Women",
+            "collection": "for-women",
+            "slider_heading": "Popular scents"
+          }
+        },
+        "mega_menu_item_LAwC3B": {
+          "type": "mega_menu_item",
+          "settings": {
+            "label": "Unisex",
+            "collection": "unisex",
+            "slider_heading": "Popular scents"
+          }
+        },
+        "menu_item_8Yf436": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Bestsellers",
+            "url": "shopify://collections/bestsellers"
+          }
+        },
+        "menu_item_JjXgCN": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Bundle & Save up to 63%",
+            "url": "shopify://products/bundle-and-save"
+          }
+        },
+        "menu_item_xWyRaA": {
+          "type": "menu_item",
+          "disabled": true,
+          "settings": {
+            "label": "Take our quiz",
+            "url": "/#quiz"
+          }
+        },
+        "menu_item_dLfQGR": {
+          "type": "menu_item",
+          "disabled": true,
+          "settings": {
+            "label": "About us",
+            "url": "shopify://pages/about-us"
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_item_kgEd9W",
+        "mega_menu_item_PtL8ng",
+        "mega_menu_item_LAwC3B",
+        "menu_item_8Yf436",
+        "menu_item_JjXgCN",
+        "menu_item_xWyRaA",
+        "menu_item_dLfQGR"
+      ],
+      "settings": {
+        "logo_position": "top-center",
+        "mobile_logo_position": "center",
+        "menu": "main-menu",
+        "search_style": "icon",
+        "show_category_row": true,
+        "category_menu": "main-menu",
+        "menu_type_desktop": "drawer",
+        "sticky_header_type": "always",
+        "show_line_separator": false,
+        "color_scheme": "scheme-4",
+        "pm_logo_on_header": "shopify://shop_images/fm-logo-header-white.png",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": true,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "marquee_labels_CjAgNU",
+    "offer_announcement_cN6pMF",
+    "offer_timebar_xLgmJd",
+    "header"
+  ]
+}

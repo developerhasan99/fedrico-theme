@@ -1,0 +1,70 @@
+{% comment %}
+  Cart goals bar (Theme settings > Cart goals): up to 3 spend goals, each a free gift or free shipping.
+  This snippet only outputs the config; assets/pm-cart-goals.js draws the bar and adds / removes the gift lines
+  (gift = product priced 0, tag pm-cart-gift, status Unlisted). Amounts are per currency; a blank CAD / GBP amount
+  falls back to the USD amount converted at Shopify's rate. Free shipping is text only and must match the shipping rates.
+
+  Accepts:
+  - preview: {Boolean} read-only bar (bundle builder): never changes the cart, adds the price being built to the cart
+    total (element.setExtra(cents) / data-extra) and re-reads the cart total after every cart update
+
+  Usage:
+  {% render 'pm-cart-goals' %}
+  {% render 'pm-cart-goals', preview: true %}
+{% endcomment %}
+
+{%- if settings.pm_goals_enable and cart != empty or settings.pm_goals_enable and preview -%}
+  {%- liquid
+    assign total = 0
+    for item in cart.items
+      unless item.product.tags contains 'pm-cart-gift'
+        assign total = total | plus: item.final_line_price
+      endunless
+    endfor
+  -%}
+  <pm-cart-goals class="pm-goals{% if preview %} pm-goals--preview{% endif %}"{% if preview %} data-preview{% endif %} style="--pm-goals-color: {{ settings.pm_goals_color }};">
+    <script type="application/json">
+      {
+        "currency": {{ cart.currency.iso_code | json }},
+        "shop_currency": {{ shop.currency | json }},
+        "locale": {{ request.locale.iso_code | json }},
+        "total": {{ total }},
+        "msg_next": {{ settings.pm_goals_msg_next | json }},
+        "msg_done": {{ settings.pm_goals_msg_done | json }},
+        "goals": [
+          {%- for n in (1..3) -%}
+            {%- liquid
+              assign k_enable = 'pm_goal_' | append: n | append: '_enable'
+              assign k_type = 'pm_goal_' | append: n | append: '_type'
+              assign k_title = 'pm_goal_' | append: n | append: '_title'
+              assign k_usd = 'pm_goal_' | append: n | append: '_amount'
+              assign k_cad = 'pm_goal_' | append: n | append: '_amount_cad'
+              assign k_gbp = 'pm_goal_' | append: n | append: '_amount_gbp'
+              assign k_product = 'pm_goal_' | append: n | append: '_product'
+              assign gift = settings[k_product]
+            -%}
+            {%- if settings[k_enable] and settings[k_usd] > 0 -%}
+              {%- unless first_done -%}{%- assign first_done = true -%}{%- else -%},{%- endunless -%}
+              {
+                "type": {{ settings[k_type] | json }},
+                "title": {{ settings[k_title] | json }},
+                "amounts": { "USD": {{ settings[k_usd] | json }}, "CAD": {{ settings[k_cad] | default: 0 | json }}, "GBP": {{ settings[k_gbp] | default: 0 | json }} },
+                "variant": {% if settings[k_type] == 'gift' and gift != blank %}{{ gift.selected_or_first_available_variant.id | json }}{% else %}null{% endif %}
+              }
+            {%- endif -%}
+          {%- endfor -%}
+        ],
+        "gift_lines": [
+          {%- assign first_line = true -%}
+          {%- for item in cart.items -%}
+            {%- if item.product.tags contains 'pm-cart-gift' -%}
+              {%- unless first_line -%},{%- endunless -%}
+              {%- assign first_line = false -%}
+              { "key": {{ item.key | json }}, "variant": {{ item.variant_id | json }}, "qty": {{ item.quantity }} }
+            {%- endif -%}
+          {%- endfor -%}
+        ]
+      }
+    </script>
+  </pm-cart-goals>
+{%- endif -%}

@@ -1,0 +1,113 @@
+/* pm-s-offer-timebar.css (WP-B): minimal announcement bar, loaded by sections/offer-timebar.liquid when style = minimal.
+   From 750 one 36px line: {prepend} · ENDS IN hh:mm:ss · {append}. Below 750 two centred lines, {prepend} on the first
+   and ENDS IN hh:mm:ss on the second (append hidden), so a longer offer text is never cut at the screen edges. */
+
+.premium .pm-timebar {
+  display: block;
+  height: 36px;
+  background: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+}
+
+.premium .pm-timebar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0 var(--pm-gutter);
+  color: inherit;
+  text-decoration: none;
+  font-size: var(--pm-fs-announce);
+  line-height: var(--pm-lh-announce);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.premium .pm-timebar__link:hover,
+.premium .pm-timebar__link:focus-visible {
+  color: inherit;
+  text-decoration: none;
+}
+
+.premium .pm-timebar__link:focus-visible {
+  outline: 2px solid rgb(var(--color-foreground));
+  outline-offset: -2px;
+}
+
+.premium .pm-timebar__text,
+.premium .pm-timebar__ends {
+  display: inline-block;
+}
+
+.premium .pm-timebar__clock {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.premium .pm-timebar__sep {
+  opacity: 0.6;
+}
+
+/* Call to action: underlined, desktop only */
+.premium .pm-timebar__cta,
+.premium .pm-timebar__sep--cta {
+  display: none;
+}
+
+.premium .pm-timebar__cta {
+  align-items: center;
+  gap: 6px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.premium .pm-timebar__arrow {
+  display: inline-block;
+  flex: none;
+  transition: transform var(--pm-dur) var(--pm-ease);
+}
+
+.premium .pm-timebar__link:hover .pm-timebar__arrow {
+  transform: translateX(2px);
+}
+
+@media (min-width: 750px) {
+  .premium .pm-timebar__sep--cta {
+    display: inline-block;
+  }
+
+  .premium .pm-timebar__cta {
+    display: inline-flex;
+  }
+}
+
+/* Phones: two lines, the offer text never cut */
+@media (max-width: 749px) {
+  .premium .pm-timebar {
+    height: auto;
+    min-height: 36px;
+  }
+
+  .premium .pm-timebar__link {
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .premium .pm-timebar__text {
+    flex: 0 0 100%;
+  }
+
+  .premium .pm-timebar__sep {
+    display: none;
+  }
+}

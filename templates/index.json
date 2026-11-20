@@ -1,0 +1,1348 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "insta_story": {
+      "type": "insta-story",
+      "blocks": {
+        "story_Pk4yRN": {
+          "type": "story",
+          "settings": {
+            "title": "Tom Ford",
+            "link": "shopify://collections/tomford®"
+          }
+        },
+        "story_VtmG7H": {
+          "type": "story",
+          "settings": {
+            "title": "Baccarat",
+            "link": "shopify://collections/baccarat-rouge®"
+          }
+        },
+        "story_wE66Dr": {
+          "type": "story",
+          "settings": {
+            "title": "LV",
+            "link": "shopify://collections/louis-vuitton®"
+          }
+        },
+        "story_nBtec6": {
+          "type": "story",
+          "settings": {
+            "title": "Creed",
+            "link": "shopify://collections/creed®"
+          }
+        },
+        "story_TRnKbC": {
+          "type": "story",
+          "settings": {
+            "title": "Dior",
+            "link": "shopify://collections/dior®"
+          }
+        },
+        "story_4qLwwC": {
+          "type": "story",
+          "disabled": true,
+          "settings": {
+            "title": "Xerjoff",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "story_Pk4yRN",
+        "story_VtmG7H",
+        "story_wE66Dr",
+        "story_nBtec6",
+        "story_TRnKbC",
+        "story_4qLwwC"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "homepage_hero_GDeBtq": {
+      "type": "homepage-hero",
+      "name": "Homepage Hero",
+      "settings": {
+        "layout": "overlay",
+        "text_tone": "light",
+        "mobile_buttons": "bottom",
+        "text_align_mobile": "center",
+        "text_align_desktop": "center",
+        "color_scheme": "scheme-1",
+        "background_color": "#ffffff",
+        "overlay_opacity": 0,
+        "mobile_overlay_opacity": 0,
+        "min_height": 480,
+        "mobile_min_height": 620,
+        "eyebrow": "Loved by 10,000+ customers",
+        "background_image": "shopify://shop_images/FM_Hero_desktop_728.webp",
+        "mobile_background_image": "shopify://shop_images/FM_Hero_mobile_728.webp",
+        "review_text": "Loved by 10,000+ Customers",
+        "title": "Find the fragrance you'll be remembered for.",
+        "subtitle": "Inspired by iconic designer perfumes. Up to 24% perfume oil, at a fraction of the price.",
+        "button_text": "For Him",
+        "button_link": "shopify://collections/for-men",
+        "secondary_button_text": "For Her",
+        "secondary_button_link": "shopify://collections/for-women",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "home_hero_banner_qmaB3G": {
+      "type": "home-hero-banner",
+      "disabled": true,
+      "name": "Home Hero Banner",
+      "settings": {
+        "link": "shopify://products/4-x-30ml-perfume-bottles"
+      }
+    },
+    "marquee_labels_RLdqpN": {
+      "type": "marquee-labels",
+      "blocks": {
+        "label_idFnra": {
+          "type": "label",
+          "disabled": true,
+          "settings": {
+            "label": "FREE SHIPPING ON ORDERS ABOVE $50"
+          }
+        },
+        "label_MXGigr": {
+          "type": "label",
+          "settings": {
+            "label": "SAVE UP TO 62% WITH OUR BUNDLES"
+          }
+        },
+        "label_iFULPM": {
+          "type": "label",
+          "settings": {
+            "label": "100% Authentic Federico Mahora formulation"
+          }
+        },
+        "label_8KQqAa": {
+          "type": "label",
+          "settings": {
+            "label": "EXPERT-CURATED COLLECTIONS"
+          }
+        },
+        "label_LMktzF": {
+          "type": "label",
+          "settings": {
+            "label": "RISK-FREE 60 DAYS MONEY BACK GUARANTEE"
+          }
+        }
+      },
+      "block_order": [
+        "label_idFnra",
+        "label_MXGigr",
+        "label_iFULPM",
+        "label_8KQqAa",
+        "label_LMktzF"
+      ],
+      "name": "Marquee Labels",
+      "settings": {
+        "style": "premium",
+        "color_scheme": "scheme-3",
+        "speed": 48,
+        "separator": "•"
+      }
+    },
+    "feature_highlights_wfUacV": {
+      "type": "feature-ships-from",
+      "blocks": {
+        "ships": {
+          "type": "ships_from",
+          "settings": {
+            "icon": "truck"
+          }
+        },
+        "perks_x8n9DF": {
+          "type": "perks",
+          "settings": {
+            "icon": "sparkle",
+            "perk_image": "shopify://shop_images/quality_check.webp",
+            "perk_title": "French fragrance quality",
+            "perk_content": "Made with the same care as leading luxury brands."
+          }
+        },
+        "perks_yTdgqz": {
+          "type": "perks",
+          "settings": {
+            "icon": "shield",
+            "perk_image": "shopify://shop_images/money_back_g.webp",
+            "perk_title": "60-day money-back guarantee",
+            "perk_content": "Not convinced? Send your order back within 60 days and get your money back"
+          }
+        },
+        "perks_7zj6gB": {
+          "type": "perks",
+          "settings": {
+            "icon": "clock",
+            "perk_image": "shopify://shop_images/long_lasting.webp",
+            "perk_title": "Long-lasting scent",
+            "perk_content": "Lasts over 12 hours on the skin (some report even longer lasting wear)."
+          }
+        }
+      },
+      "block_order": [
+        "ships",
+        "perks_yTdgqz",
+        "perks_7zj6gB",
+        "perks_x8n9DF"
+      ],
+      "name": "Feature Highlights",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "background_color": "#ffffff",
+        "show_legacy_ships_from": false,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "custom_liquid_4rbfWw": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<!-- Federico Mahora &#8212; Social proof (Swedish) &#8212; Custom Liquid paste block.\n     Pure HTML+CSS+JS, scoped to .ts-proof-sv. No Liquid tags (Custom Liquid editor rejects them). -->\n<style>\n.ts-proof-sv{font-family:Inter,Arial,Helvetica,sans-serif;color:#111315;background:#fff;padding:48px 0;overflow:hidden}\n.ts-proof-sv *{box-sizing:border-box;margin:0}\n.ts-proof-sv .container{width:min(860px,calc(100% - 36px));margin-inline:auto}\n.ts-proof-sv .proof-head{text-align:center;max-width:640px;margin:0 auto 30px}\n.ts-proof-sv .stars-lg,.ts-proof-sv .review-stars{display:flex;gap:3px}\n.ts-proof-sv .stars-lg{justify-content:center;margin-bottom:14px}\n.ts-proof-sv .stars-lg span,.ts-proof-sv .review-stars span{display:grid;place-items:center;background:#00b67a}\n.ts-proof-sv .stars-lg span.off,.ts-proof-sv .review-stars span.off{background:#dcdce6}\n.ts-proof-sv .stars-lg span{width:28px;height:28px}\n.ts-proof-sv .review-stars span{width:15px;height:15px}\n.ts-proof-sv svg{fill:#fff;width:76%;height:76%}\n.ts-proof-sv .kicker{font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:#00b67a;margin-bottom:10px}\n.ts-proof-sv .section-title{font-size:26px;line-height:1.25;font-weight:800;color:#121212}\n.ts-proof-sv .carousel{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 8px}\n.ts-proof-sv .carousel::-webkit-scrollbar{display:none}\n.ts-proof-sv .review-card{flex:0 0 calc((100% - 32px) / 3);scroll-snap-align:start;display:flex;flex-direction:column;background:#fff;border:1px solid #e8e8e8;border-radius:10px;padding:16px 16px 14px;box-shadow:0 1px 4px rgba(0,0,0,.05)}\n.ts-proof-sv .review-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}\n.ts-proof-sv .verified{font-size:11px;color:rgba(0,0,0,.55);white-space:nowrap}\n.ts-proof-sv .tp-dot{color:#00b67a}\n.ts-proof-sv .review-card h3{margin-bottom:8px;font-size:14px;line-height:1.4;font-weight:700;color:#121212}\n.ts-proof-sv .review-card p{margin-bottom:8px;font-size:13px;line-height:1.6;color:rgba(0,0,0,.62)}\n.ts-proof-sv .review-card p.result-line{font-weight:600;color:#121212;margin-bottom:12px}\n.ts-proof-sv .person{margin-top:auto;font-size:13px;color:#121212}\n.ts-proof-sv .person strong{display:block;font-size:13px}\n.ts-proof-sv .person span{display:block;font-size:11px;line-height:1.35;color:rgba(0,0,0,.55)}\n.ts-proof-sv .nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}\n.ts-proof-sv .arrow{width:40px;height:40px;border-radius:50%;border:1px solid #d6d6d6;background:#fff;color:#121212;font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0 0 3px;transition:background .2s,color .2s,border-color .2s}\n.ts-proof-sv .arrow:hover{background:#121212;border-color:#121212;color:#fff}\n.ts-proof-sv .arrow:disabled{opacity:.35;cursor:default;background:#fff;color:#121212;border-color:#d6d6d6}\n.ts-proof-sv .dots{display:flex;gap:0}\n.ts-proof-sv .dot{box-sizing:content-box;width:8px;height:8px;border-radius:50%;border:0;padding:8px 5px;background:#d9d9d9;background-clip:content-box;cursor:pointer}\n.ts-proof-sv .dot.active{background:#00b67a;background-clip:content-box}\n@media(max-width:749px){\n  .ts-proof-sv{padding:32px 0}\n  .ts-proof-sv .container{width:100%}\n  .ts-proof-sv .proof-head{padding:0 18px;margin-bottom:22px}\n  .ts-proof-sv .stars-lg span{width:24px;height:24px}\n  .ts-proof-sv .section-title{font-size:22px}\n  .ts-proof-sv .carousel{gap:12px;padding:4px 18px 8px;scroll-padding-left:18px}\n  .ts-proof-sv .review-card{flex-basis:82%}\n  .ts-proof-sv .arrow{display:none}\n}\n</style>\n<section class=\"ts-proof-sv\">\n  <div class=\"container\">\n    <div class=\"proof-head\">\n      <div class=\"stars-lg\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n      <div class=\"kicker\">Why they fell for Federico Mahora</div>\n      <h2 class=\"section-title\">They say it better than we ever could.</h2>\n    </div>\n    <div class=\"carousel\" data-ts-carousel>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;I've already had several compliments after wearing them.&#8221;</h3>\n        <p>What people notice first isn't the bottle or the price, but how the scent changes your presence.</p>\n        <p class=\"result-line\">Same compliments. A better price.</p>\n        <div class=\"person\"><strong>Eleanor Vance</strong><span>Verified reviewer on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;It smells EXACTLY like Dior Homme Intense &#8230; almost scarily similar.&#8221;</h3>\n        <p>The dark, creamy, luxurious character you expect was there from the very first spray.</p>\n        <p class=\"result-line\">The familiar fragrance experience, without the designer price.</p>\n        <div class=\"person\"><strong>Julian Finch</strong><span>Verified reviewer on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"4 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span class=\"off\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;Better than some of the most expensive perfumes you can buy.&#8221;</h3>\n        <p>The scent exceeded expectations and delivered the quality you usually associate with a much higher price.</p>\n        <p class=\"result-line\">Expensive presence. Unexpected price.</p>\n        <div class=\"person\"><strong>Rose Blake</strong><span>Verified reviewer on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;At first I was skeptical &#8230;&#8221;</h3>\n        <p>But when I placed my first order I discovered the perfumes are amazing and very similar to the original perfumes. The price is also really, really good. I'll definitely keep shopping from Federico Mahora in the future.</p>\n        <div class=\"person\"><strong>Coralie Marine</strong><span>Review on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;Scents that really smell like the original.&#8221;</h3>\n        <p>Lasts as long as promised. Fast delivery and low prices. All I can say is buy buy!</p>\n        <div class=\"person\"><strong>Jasper Night</strong><span>Review on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;The perfumes last long and are very identical &#10084;&#65039;&#8221;</h3>\n        <p>Got my first order of 6 different perfumes, now I've ordered 8 more and look forward to when they arrive.</p>\n        <div class=\"person\"><strong>Sylvia Wilde</strong><span>Review on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;Their perfumes are like the real thing.&#8221;</h3>\n        <p>I actually really like Try Scent, they're amazing. I have at least 20 bottles of Federico Mahora perfume and only wear those &#128536;</p>\n        <div class=\"person\"><strong>Tristan Ashford</strong><span>Review on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;Matches the original scent well &#128077;&#8221;</h3>\n        <p>It doesn't last all day though, but I can't remember if the original did either. I've ordered 6 new scents and will be back with a rating on them &#128077;</p>\n        <div class=\"person\"><strong>Daisy Hawthorne</strong><span>Review on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;Really great service.&#8221;</h3>\n        <p>Got a bottle that leaked a little at the collar, pointed it out, and without hesitation they sent a new bottle plus two surprise scents as compensation! Very grateful!</p>\n        <div class=\"person\"><strong>Lucas Bennett</strong><span>Review on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;You won't find anyone more accommodating!&#8221;</h3>\n        <p>Got in touch about a problem I ran into! Got to talk to someone called Eric! They helped me smoothly and were really service-minded! I recommend Tryscent.co! Big thanks!</p>\n        <div class=\"person\"><strong>Cole Swift</strong><span>Review on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>“Amazing response.”</h3>\n        <p>There had been a small accident with one of the perfumes I ordered and I emailed the company. I got a quick reply from Ed and it was resolved in the best way. So happy with how they handled it.</p>\n        <div class=\"person\"><strong>Teresa Cole</strong><span>Review on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"4 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span class=\"off\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;439 kr including shipping for 330 ml of perfume. Not bad.&#8221;</h3>\n        <p>Really good price, 380 kr for six 50 ml perfume bottles and I also got a free 30 ml mystery bottle.</p>\n        <div class=\"person\"><strong>Silas Rowan</strong><span>Review on Trustpilot</span></div>\n      </article>\n      <article class=\"review-card\">\n        <div class=\"review-top\">\n          <div class=\"review-stars\" role=\"img\" aria-label=\"5 out of 5 stars\"><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span><span><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.7l7.1-.6z\"/></svg></span></div>\n          <span class=\"verified\"><span class=\"tp-dot\">&#9679;</span> Trustpilot review</span>\n        </div>\n        <h3>&#8220;Very happy with how they smell.&#8221;</h3>\n        <p>I've now received my items. It was well packaged and I got good updates on how the delivery was going.</p>\n        <div class=\"person\"><strong>Ivy Sterling</strong><span>Review on Trustpilot</span></div>\n      </article>\n    </div>\n    <div class=\"nav\">\n      <button type=\"button\" class=\"arrow\" data-ts-prev aria-label=\"Previous review\">&#8249;</button>\n      <div class=\"dots\" data-ts-dots></div>\n      <button type=\"button\" class=\"arrow\" data-ts-next aria-label=\"Next review\">&#8250;</button>\n    </div>\n  </div>\n</section>\n\n<script>\n(function(){\n  var roots = document.querySelectorAll('.ts-proof-sv');\n  Array.prototype.forEach.call(roots, function(root){\n    var track = root.querySelector('[data-ts-carousel]');\n    var dotsWrap = root.querySelector('[data-ts-dots]');\n    var prev = root.querySelector('[data-ts-prev]');\n    var next = root.querySelector('[data-ts-next]');\n    if (!track || !dotsWrap || !prev || !next) return;\n    var cards = Array.prototype.slice.call(track.children);\n    if (!cards.length) return;\n\n    function step(){ return cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth; }\n    function positions(){ return Math.max(1, cards.length - Math.round(track.clientWidth / step()) + 1); }\n    function current(){\n      var max = track.scrollWidth - track.clientWidth;\n      if (track.scrollLeft >= max - 2) return positions() - 1;\n      return Math.round(track.scrollLeft / step());\n    }\n    function go(i){ track.scrollTo({left: i * step(), behavior: 'smooth'}); }\n\n    function buildDots(){\n      dotsWrap.innerHTML = '';\n      for (var i = 0; i < positions(); i++) {\n        var d = document.createElement('button');\n        d.type = 'button';\n        d.className = 'dot';\n        d.setAttribute('aria-label', 'Review ' + (i + 1));\n        d.addEventListener('click', go.bind(null, i));\n        dotsWrap.appendChild(d);\n      }\n      update();\n    }\n    function update(){\n      var c = current(), n = positions();\n      Array.prototype.forEach.call(dotsWrap.children, function(d, i){ d.classList.toggle('active', i === c); });\n      prev.disabled = c <= 0;\n      next.disabled = c >= n - 1;\n    }\n\n    prev.addEventListener('click', function(){ go(Math.max(0, current() - 1)); });\n    next.addEventListener('click', function(){ go(Math.min(positions() - 1, current() + 1)); });\n    var t;\n    track.addEventListener('scroll', function(){ clearTimeout(t); t = setTimeout(update, 60); });\n    window.addEventListener('resize', buildDots);\n    buildDots();\n  });\n})();\n</script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "popular_products_XDHbay": {
+      "type": "popular-products",
+      "name": "Best sellers",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "background_color": "#ffffff",
+        "title": "Best sellers",
+        "description": "",
+        "collection": "bestsellers",
+        "button_text": "View all",
+        "button_link": "shopify://collections/bestsellers",
+        "padding_top": 80,
+        "padding_bottom": 80
+      },
+      "disabled": true
+    },
+    "popular_products_pNDeh4": {
+      "type": "popular-products",
+      "disabled": true,
+      "name": "Popular Products",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "background_color": "#ffffff",
+        "title": "New scents",
+        "description": "<p>”Without a doubt the best dupes I've tried. They last for hours once applied, and I'm already planning my next order.” <strong>Jim Rogers</strong></p>",
+        "collection": "new-scents",
+        "button_text": "View all",
+        "button_link": "shopify://collections/new-scents",
+        "padding_top": 40,
+        "padding_bottom": 72
+      }
+    },
+    "review_grid_H3xfHP": {
+      "type": "review-grid",
+      "blocks": {
+        "review_MKcdVw": {
+          "type": "review",
+          "settings": {
+            "heading": "Highly recommended.",
+            "content": "<p>From customer service to the product itself, the experience was excellent. Everything arrived as expected, and I'd happily buy again.</p>",
+            "author": "Benjamin M.",
+            "date": "2 days ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_kCUEm4": {
+          "type": "review",
+          "settings": {
+            "heading": "Arrived perfectly.",
+            "content": "<p>The product was well packaged, arrived in excellent condition and the scent quality exceeded my expectations. Very happy with this purchase.</p>",
+            "author": "Sharley A.",
+            "date": "2 days ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_EbFNac": {
+          "type": "review",
+          "settings": {
+            "heading": "Great value.",
+            "content": "<p>I was really impressed by the quality. The scent lasts well and feels comparable to much more expensive brands.</p>",
+            "author": "Santosh K.",
+            "date": "2 days ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_MKcdVw",
+        "review_kCUEm4",
+        "review_EbFNac"
+      ],
+      "disabled": true,
+      "name": "Review Grid",
+      "settings": {
+        "background_color": "#ffffff",
+        "heading": "What our customers say",
+        "review_text": "4.9/5 based on 10000+ reviews",
+        "button_text": "Read all reviews",
+        "button_link": "shopify://collections/all",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "special_offer_bogo_nMzyNp": {
+      "type": "special-offer-bogo",
+      "blocks": {
+        "perk_wnTHMw": {
+          "type": "perk",
+          "settings": {
+            "text": "Lasts 12+ Hours"
+          }
+        },
+        "perk_VkFF3N": {
+          "type": "perk",
+          "settings": {
+            "text": "loved by 10,000+"
+          }
+        },
+        "perk_cG7y8p": {
+          "type": "perk",
+          "settings": {
+            "text": "60 day satisfaction guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "perk_wnTHMw",
+        "perk_VkFF3N",
+        "perk_cG7y8p"
+      ],
+      "disabled": true,
+      "name": "Special Offer",
+      "settings": {
+        "offer_text": "Special Offer",
+        "offer_title": "Buy More, Get More Free",
+        "offer_description": "Choose your perfect bundle and receive matching free bottles in the same size: 30ml, 50ml, or 100ml.",
+        "offer_sub_description": "Scents that last all day. Luxury-inspired, up to 90% cheaper than designer brands.",
+        "offer_button_text": "Buy 4 for $44.00 Only",
+        "offer_button_link": "https://magyx.co/products/4-x-100ml-perfume-bottles",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "shop_by_fHtnnB": {
+      "type": "shop-by",
+      "blocks": {
+        "collection_t6NHM7": {
+          "type": "collection",
+          "settings": {
+            "heading": "Scents For Women",
+            "subheading": "100+ scents to choose from",
+            "button_text": "Explore",
+            "button_link": "shopify://collections/woman",
+            "collection": "woman"
+          }
+        },
+        "collection_zqtLKY": {
+          "type": "collection",
+          "settings": {
+            "heading": "Scents For Men",
+            "subheading": "100+ scents to choose from",
+            "button_text": "Explore",
+            "button_link": "shopify://collections/man",
+            "collection": "man"
+          }
+        }
+      },
+      "block_order": [
+        "collection_t6NHM7",
+        "collection_zqtLKY"
+      ],
+      "disabled": true,
+      "name": "Shop By",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "heading": "Shop By Bestsellers",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "here_from_them_wccxKG": {
+      "type": "here-from-them",
+      "blocks": {
+        "testimonial_3jMx8n": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Marcus R.",
+            "quote": "I didn’t expect much, but this is my new signature. It smells expensive, lasts all day, and actually turns heads."
+          }
+        },
+        "testimonial_Bh4nVA": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Marcus R.",
+            "quote": "I didn’t expect much, but this is my new signature. It smells expensive, lasts all day, and actually turns heads."
+          }
+        },
+        "testimonial_P4hxWQ": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Marcus R.",
+            "quote": "I didn’t expect much, but this is my new signature. It smells expensive, lasts all day, and actually turns heads."
+          }
+        },
+        "testimonial_yja8kV": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Marcus R.",
+            "quote": "I didn’t expect much, but this is my new signature. It smells expensive, lasts all day, and actually turns heads."
+          }
+        },
+        "testimonial_MGyB3e": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Marcus R.",
+            "quote": "I didn’t expect much, but this is my new signature. It smells expensive, lasts all day, and actually turns heads."
+          }
+        },
+        "testimonial_EQziDc": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Marcus R.",
+            "quote": "I didn’t expect much, but this is my new signature. It smells expensive, lasts all day, and actually turns heads."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_3jMx8n",
+        "testimonial_Bh4nVA",
+        "testimonial_P4hxWQ",
+        "testimonial_yja8kV",
+        "testimonial_MGyB3e",
+        "testimonial_EQziDc"
+      ],
+      "disabled": true,
+      "name": "Here From Them Carousel",
+      "settings": {
+        "heading": "Hear From Them."
+      }
+    },
+    "image_and_text": {
+      "type": "image-and-text",
+      "blocks": {
+        "heading_ax7WWJ": {
+          "type": "heading",
+          "settings": {
+            "content": "No cheap imports. Made without harsh chemicals.",
+            "heading_type": "h2",
+            "font_size": 32,
+            "mobile_font_size": 24
+          }
+        },
+        "text_gzPVkb": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Made without harsh chemicals, to the highest quality standards, with control over every step of the manufacturing process.<br/><br/>From the selection of premium raw materials to the careful filling of each bottle, we ensure that every product meets our rigorous quality and craftsmanship requirements.</p>",
+            "mobile_content": "",
+            "font_size": 18
+          }
+        }
+      },
+      "block_order": [
+        "heading_ax7WWJ",
+        "text_gzPVkb"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "image": "shopify://shop_images/FM_Website_52.webp",
+        "rounded_image": false,
+        "image_placement": "1",
+        "mobile_image_placement": "under_heading",
+        "button_text": "Discover more",
+        "button_url": "shopify://pages/about",
+        "columns_gap": 40,
+        "rows_gap": 20,
+        "content_alignment": "center",
+        "blocks_gap": 24,
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40,
+        "layout": "card"
+      }
+    },
+    "home_category_wNQCfP": {
+      "type": "home-category",
+      "blocks": {
+        "category_yXjfNN": {
+          "type": "category",
+          "disabled": true,
+          "settings": {
+            "text": "Bundle & save",
+            "link": "shopify://products/bundle-and-save"
+          }
+        },
+        "category_JatE79": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/FM_Website_11.webp",
+            "image_position": "center",
+            "text": "For Him",
+            "descriptor": "Fragrances for men",
+            "link": "shopify://collections/for-men"
+          }
+        },
+        "category_kcgbew": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/FM_Website_22.webp",
+            "image_position": "center",
+            "text": "For Her",
+            "descriptor": "Fragrances for women",
+            "link": "shopify://collections/for-women"
+          }
+        },
+        "category_PLwfRa": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/FM_Website_16.webp",
+            "image_position": "center",
+            "text": "Unisex",
+            "descriptor": "Fragrances for all",
+            "link": "shopify://collections/unisex"
+          }
+        }
+      },
+      "block_order": [
+        "category_yXjfNN",
+        "category_JatE79",
+        "category_kcgbew",
+        "category_PLwfRa"
+      ],
+      "name": "Home Categories",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "background_color": "#ffffff",
+        "title": "Shop by category",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "makes_different_list_YjiDH8": {
+      "type": "makes-different-list",
+      "blocks": {
+        "list_item_LLAAfL": {
+          "type": "list_item",
+          "settings": {
+            "title": "Inspired by luxury icons",
+            "description": "without the inflated price tags"
+          }
+        },
+        "list_item_Y8PNCx": {
+          "type": "list_item",
+          "settings": {
+            "title": "Vegan and clean ingredients",
+            "description": "for complete peace of mind."
+          }
+        },
+        "list_item_yxDVcQ": {
+          "type": "list_item",
+          "settings": {
+            "title": "Scents that last all day",
+            "description": "And keep up through your most active hours."
+          }
+        },
+        "list_item_htAiEB": {
+          "type": "list_item",
+          "settings": {
+            "title": "Mini sizes to try first",
+            "description": "Test on your skin first. So you're 100% sure before you commit to a full bottle."
+          }
+        },
+        "list_item_bhN48G": {
+          "type": "list_item",
+          "settings": {
+            "title": "60-day satisfaction guarantee.",
+            "description": "in case it isn't love at first spray."
+          }
+        }
+      },
+      "block_order": [
+        "list_item_LLAAfL",
+        "list_item_Y8PNCx",
+        "list_item_yxDVcQ",
+        "list_item_htAiEB",
+        "list_item_bhN48G"
+      ],
+      "name": "Makes Different",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "background_color": "#ffffff",
+        "makes_diferent_title": "What makes Federico Mahora different?",
+        "makes-different-image": "shopify://shop_images/FM_Website_10.webp",
+        "makes-different-btn-text": "BLACK FRIDAY: UP TO 40% OFF",
+        "makes-different-btn-link": "shopify://collections/bestsellers",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "home_occasions_BUcQ8i": {
+      "type": "home-occasions",
+      "blocks": {
+        "occasion_En4TzG": {
+          "type": "occasion",
+          "settings": {
+            "eyebrow": "01 · Presence",
+            "title": "Attraction",
+            "description": "Leave a lasting impression.",
+            "link_text": "Find Your Scent",
+            "link": ""
+          }
+        },
+        "occasion_QEiwYC": {
+          "type": "occasion",
+          "settings": {
+            "eyebrow": "02 · Composure",
+            "title": "Confidence",
+            "description": "Feel your best wherever the day takes you.",
+            "link_text": "Wear Confidence",
+            "link": ""
+          }
+        },
+        "occasion_tGyXzt": {
+          "type": "occasion",
+          "settings": {
+            "eyebrow": "03 · Occasion",
+            "title": "Special Occasions",
+            "description": "For the moments that deserve something extra.",
+            "link_text": "Make It Memorable",
+            "link": ""
+          }
+        },
+        "occasion_aMPdA4": {
+          "type": "occasion",
+          "settings": {
+            "eyebrow": "04 · Signature",
+            "title": "Everyday",
+            "description": "Your signature scent people will remember you by.",
+            "link_text": "Find Your Everyday",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "occasion_En4TzG",
+        "occasion_QEiwYC",
+        "occasion_tGyXzt",
+        "occasion_aMPdA4"
+      ],
+      "disabled": true,
+      "name": "Home Occasions",
+      "settings": {
+        "background_color": "#f5f2ec",
+        "eyebrow": "Build Your Collection",
+        "heading": "A fragrance for every occasion.",
+        "description": "<p>We are here to help you build a personalized and elite fragrance collection designed specifically for the most important occasions in life.</p>",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "massive_review_section": {
+      "type": "massive-review",
+      "blocks": {
+        "review_zAw7dR": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I really like this brand and the fragrance are amazing..\"</p>",
+            "author": "Lilian M.",
+            "date": "1 day ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_yEDVJD": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Easy process throw payment and trust worthy website\"</p>",
+            "author": "Robinson K.",
+            "date": "2 days ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_yCzQxH": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Supergood alternativ, lasting long and is the same like the more expansive perfumes. Highly recommend to test you will not be disappointed.\"</p>",
+            "author": "Maria M",
+            "date": "2 days ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_XfwcAY": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I had the opportunity to try their perfumes, they have a great price, a wide range of fragrances but above all their perfumes are persistent and long-lasting highly recommended!\"</p>",
+            "author": "Clara P.",
+            "date": "3 days ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_8jw9Px": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"High quality product for only $39.99! The perfume smells exactly like the original and it last for hours!<br/>Recommended \"</p>",
+            "author": "Adele S.",
+            "date": "2 Weeks ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_UPwGBF": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I bought one perfume inspired by mademoiselle , and it’s fantastic . It last long on the skin and the smell it’s absolutely identical. \"</p>",
+            "author": "Jenniffer W.",
+            "date": "3 Weeks ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_icFmQQ": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"the perfume is mega-true, beautiful scent, I fell in love with it\"</p>",
+            "author": "Tiana N.",
+            "date": "3 Weeks ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_RnXXg9": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I love it. I love it, one of my favourite!\"</p>",
+            "author": "Michael T.",
+            "date": "2 Weeks ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_aThE8h": {
+          "type": "review",
+          "disabled": true,
+          "settings": {
+            "content": "<p>\"Best of the BEST!\"</p>",
+            "author": "Alex W.",
+            "date": "3 Weeks ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_YXwWcc": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I loooove these perfumes! Each one I received smells divinely good. Some, I would say, are better than the original.\"</p>",
+            "author": "Christine N.",
+            "date": "3 Months ago",
+            "rating": 4,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_nQ6MLV": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Woow this is my second order I love it \"</p>",
+            "author": "Lionel M.",
+            "date": "3 Weeks ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_y8tq9b": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Quick service, Great products\"</p>",
+            "author": "Lidis A.",
+            "date": "2 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_wbXdLy": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"It smells very good, but it doesn't last as long as it should.\"</p>",
+            "author": "Lisa M.",
+            "date": "2 months ago",
+            "rating": 5,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_bjRzPy": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"It smells very good, I'm fascinated by it.\"</p>",
+            "author": "Castillo B.",
+            "date": "3 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_639hbA": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Very good! I am going to recommend this yo all my friend \"</p>",
+            "author": "Kamila G.",
+            "date": "3 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_G3HzBj": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I love your perfumes\"</p>",
+            "author": "Robinson D.",
+            "date": "4 months ago",
+            "rating": 4,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_KK6jhW": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"The smell was consistant while wearing it for a long while. No complains there\"</p>",
+            "author": "Michael R.",
+            "date": "4 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_HjyT3p": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Very high quality!!\"</p>",
+            "author": "Alvarez P.",
+            "date": "4 months ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_6Bhttk": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"These smells amazing , good price fast delivery.\"</p>",
+            "author": "Anne E.",
+            "date": "4 months ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_8FxpJj": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Good Order and really good Delivery service\"</p>",
+            "author": "Lucy R",
+            "date": "4 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_JRzxRP": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I am satisfied with Federico Mahora. The perfume smells very similar to the original and holds well. The packaging is neat and the bottle is beautiful. Overall, it's an excellent option if you want a quality perfume at a reasonable price.\"</p>",
+            "author": "Alina M",
+            "date": "5 months ago",
+            "rating": 5,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_9T4pt3": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Their products are good quality at a very affordable price.\"</p>",
+            "author": "Amanda G",
+            "date": "5 months ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_aietxq": {
+          "type": "review",
+          "disabled": true,
+          "settings": {
+            "content": "<p>\"Superb fragrances, excellent products, no problem.\"</p>",
+            "author": "Alex S.",
+            "date": "6 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_YtFw34": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"The product arrived well packaged. The perfume wasn't broken, hadn't leaked and was in good condition. The perfume is perfect and didn't smell bad. I love it, high quality.\"</p>",
+            "author": "Roxanne S",
+            "date": "5 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_WnPpEf": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"From service to product, the experience was phenomenal. I will happily buy again anytime.\"</p>",
+            "author": "Benjamin M",
+            "date": "5 months ago",
+            "rating": 5,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_jRgbTk": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Excellent product! Super affordable alternative to brand name perfumes. The fragrance lasts a long time and you get your money's worth.\"</p>",
+            "author": "EM",
+            "date": "4 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_GbhyC3": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Oh my God, I loved it. Wow! Exactly like the original and it lasts all day!\"</p>",
+            "author": "Marianne",
+            "date": "4 months ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_C3bd9b": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"The fragrance of this product is super rich and I love how beautiful the bottle and its design are. I would really use it again.\"</p>",
+            "author": "Eliannys Y",
+            "date": "7 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_NYCPwJ": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I like it! I appreciate this fragrance. Good smell.\"</p>",
+            "author": "Metrine M",
+            "date": "7 months ago",
+            "rating": 5,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_EniFK9": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Excellent product, smells fantastically good. I always have people asking me about my fragrance and what I use.\"</p>",
+            "author": "Damario R",
+            "date": "7 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_r8Gi8i": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Super brand and excellent products!\"</p>",
+            "author": "Juliana B",
+            "date": "4 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_LRkiUH": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"After a small delay, I finally received my Federico Mahora perfumes and they are exactly as they should be! I can hardly believe how much they match the originals. For reference, I received \"Ylang Ylang Rose Jasmine\" and \"Aldehydes Rose Sandalwood\", these are really beautiful fragrances.\"</p>",
+            "author": "Gabriella K",
+            "date": "7 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_Vb9HW7": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Very good brand, I love the packaging and the aroma.\"</p>",
+            "author": "Rosa B",
+            "date": "7 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_JdiNyt": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I'm a big fan of cologne, so I'm picky about clones, but Federico Mahora completely convinced me. I ordered the Sauvage clone from the homepage and immediately recognized the scent when spraying it. I now own 4 Federico Mahora perfumes in total and I love them all. I have 3 more on the way thanks to their bundle deals. If you want something that works on a small budget and offers designer performance, I can't recommend them enough.\"</p>",
+            "author": "Sean P",
+            "date": "4 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_bNVhH6": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I am very satisfied with the perfume from this brand, they have such a beautiful perfume like the original and cheaper, I will definitely buy again.\"</p>",
+            "author": "Angel",
+            "date": "8 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_PiLjha": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"This summer, I received a sample of Creed Aventus as a gift and really liked it, but I couldn't buy the original, so I looked for dupes. I found Federico Mahora and ordered \"Pineapple Smoke Vanilla\", it arrived in about a week and smells really good, as close to my original sample, very satisfied with the product, especially for the price.\"</p>",
+            "author": "Hwan H",
+            "date": "8 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_AEQxcH": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"I tried their 7.5 ml samples and to my great surprise, I loved them. I placed a 2nd order, but this time I took the larger bottles. I must say I received my orders on time and they delivered the fragrances I love!\"</p>",
+            "author": "Lauri E",
+            "date": "8 months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_zAw7dR",
+        "review_yEDVJD",
+        "review_yCzQxH",
+        "review_XfwcAY",
+        "review_8jw9Px",
+        "review_UPwGBF",
+        "review_icFmQQ",
+        "review_RnXXg9",
+        "review_aThE8h",
+        "review_YXwWcc",
+        "review_nQ6MLV",
+        "review_y8tq9b",
+        "review_wbXdLy",
+        "review_bjRzPy",
+        "review_639hbA",
+        "review_G3HzBj",
+        "review_KK6jhW",
+        "review_HjyT3p",
+        "review_6Bhttk",
+        "review_8FxpJj",
+        "review_JRzxRP",
+        "review_9T4pt3",
+        "review_aietxq",
+        "review_YtFw34",
+        "review_WnPpEf",
+        "review_jRgbTk",
+        "review_GbhyC3",
+        "review_C3bd9b",
+        "review_NYCPwJ",
+        "review_EniFK9",
+        "review_r8Gi8i",
+        "review_LRkiUH",
+        "review_Vb9HW7",
+        "review_JdiNyt",
+        "review_bNVhH6",
+        "review_PiLjha",
+        "review_AEQxcH"
+      ],
+      "name": "Massive Review",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "background_color": "#ffffff",
+        "heading": "Loved by 10,000+ Customers",
+        "review_text": "4.9 · 10,000+ reviews",
+        "initial_count": 6,
+        "columns_desktop": "2",
+        "columns_mobile": "1",
+        "button_text": "See more reviews",
+        "button_link": "",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "our_bestsellers_niPBnL": {
+      "type": "our-bestsellers",
+      "name": "Our Bestsellers",
+      "settings": {
+        "background_color": "#f6f6f6",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "people_are_lovin_VGanra": {
+      "type": "people-are-lovin",
+      "disabled": true,
+      "name": "People Are Loving",
+      "settings": {
+        "background_color": "#f0f2ec",
+        "makes_diferent_title": "People Are Loving",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "175501299681a2aa62": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "17551175978bd893d1": {
+      "type": "apps",
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "175501299598bc050d": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "tabs_best": {
+      "type": "home-product-tabs",
+      "blocks": {
+        "tab_bestsellers": {
+          "type": "tab",
+          "settings": {
+            "title": "Bestsellers",
+            "collection": "bestsellers"
+          }
+        },
+        "tab_new": {
+          "type": "tab",
+          "settings": {
+            "title": "New",
+            "collection": "new"
+          }
+        }
+      },
+      "block_order": [
+        "tab_bestsellers",
+        "tab_new"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "Best sellers",
+        "subheading": "Our curated picks for the season",
+        "products_per_tab": 12,
+        "layout": "grid",
+        "grid_products": 6,
+        "grid_columns_desktop": 3,
+        "button_text": "Discover",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "tabs_family": {
+      "type": "home-product-tabs",
+      "blocks": {
+        "tab_floral": {
+          "type": "tab",
+          "settings": {
+            "title": "Floral",
+            "collection": "all",
+            "filter": "Floral"
+          }
+        },
+        "tab_oriental": {
+          "type": "tab",
+          "settings": {
+            "title": "Oriental",
+            "collection": "all",
+            "filter": "Oriental"
+          }
+        },
+        "tab_woody": {
+          "type": "tab",
+          "settings": {
+            "title": "Woody",
+            "collection": "all",
+            "filter": "Woody"
+          }
+        },
+        "tab_gourmand": {
+          "type": "tab",
+          "settings": {
+            "title": "Gourmand",
+            "collection": "all",
+            "filter": "Gourmand"
+          }
+        },
+        "tab_fruity": {
+          "type": "tab",
+          "settings": {
+            "title": "Fruity",
+            "collection": "all",
+            "filter": "Fruity"
+          }
+        },
+        "tab_spicy": {
+          "type": "tab",
+          "settings": {
+            "title": "Spicy",
+            "collection": "all",
+            "filter": "Spicy"
+          }
+        }
+      },
+      "block_order": [
+        "tab_floral",
+        "tab_oriental",
+        "tab_woody",
+        "tab_gourmand",
+        "tab_fruity",
+        "tab_spicy"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "Shop by scent family",
+        "subheading": "Pick a family and discover scents that match",
+        "products_per_tab": 12,
+        "button_text": "Discover",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "bundle_feed": {
+      "type": "home-bundle-feed",
+      "blocks": {
+        "bundle_3": {
+          "type": "bundle",
+          "settings": {
+            "image": "shopify://shop_images/FM_Website_14.webp",
+            "badge": "57% off",
+            "title": "3-scent bundle",
+            "price": "$51",
+            "subtitle": "Mix and match any 3 scents",
+            "link": "shopify://products/bundle-and-save"
+          }
+        },
+        "bundle_5": {
+          "type": "bundle",
+          "settings": {
+            "image": "shopify://shop_images/FM_Website_23.webp",
+            "badge": "62% off",
+            "title": "5-scent bundle",
+            "price": "$75",
+            "subtitle": "Mix and match any 5 scents",
+            "link": "shopify://products/bundle-and-save"
+          }
+        }
+      },
+      "block_order": [
+        "bundle_3",
+        "bundle_5"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "banner_image": "shopify://shop_images/FM_Website_41.webp",
+        "banner_heading": "Explore bundles",
+        "banner_link_text": "Shop now",
+        "banner_link": "shopify://products/bundle-and-save",
+        "overlay_opacity": 55,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "homepage_hero_GDeBtq",
+    "marquee_labels_RLdqpN",
+    "tabs_best",
+    "popular_products_XDHbay",
+    "home_category_wNQCfP",
+    "tabs_family",
+    "bundle_feed",
+    "image_and_text",
+    "makes_different_list_YjiDH8",
+    "massive_review_section",
+    "feature_highlights_wfUacV",
+    "our_bestsellers_niPBnL",
+    "175501299681a2aa62",
+    "175501299598bc050d",
+    "insta_story",
+    "home_hero_banner_qmaB3G",
+    "custom_liquid_4rbfWw",
+    "popular_products_pNDeh4",
+    "review_grid_H3xfHP",
+    "special_offer_bogo_nMzyNp",
+    "shop_by_fHtnnB",
+    "here_from_them_wccxKG",
+    "home_occasions_BUcQ8i",
+    "people_are_lovin_VGanra",
+    "17551175978bd893d1"
+  ]
+}

@@ -1,0 +1,151 @@
+{% comment %}
+  Product card (premium): used by main-collection-product-grid and popular-products.
+
+  Accepts:
+  - product: {Object} product
+  - lazy: {Boolean} true adds loading="lazy" to the image (optional; default eager, as before)
+  - atc: {Boolean} true renders an Add to cart button under the card (collection grid, theme setting
+    "Add to cart button on collection cards"). It is a sibling of the <a>, never inside it, and runs on
+    Dawn's product-form (assets/product-form.js): adds the card's variant by fetch and opens the cart drawer.
+  - section_id: {String} section id for product-form (required with atc)
+
+  Contract kept for the price-test app: the outer element stays an <a>, the price span keeps .ab-current-price,
+  and no .product-card-wrapper[data-variant-id] is added here.
+  Price = the first available variant (sold-out products fall back to the first variant; the card still links).
+  Badges (top-left): Sold out as a white pm-badge, then the fragrance line badge (oil %, snippets/fm-line.liquid,
+  theme setting "Show on product cards"). New (tag "new") and Bestseller (tag "bestseller") ink pm-badges only show
+  for products without a line; tags match in any letter case. The green "Shop now" bar is now the .pm-card__quick square.
+{% endcomment %}
+
+{%- liquid
+  assign pm_variant = nil
+  for pm_v in product.variants
+    if pm_v.available
+      assign pm_variant = pm_v
+      break
+    endif
+  endfor
+  if pm_variant == nil
+    assign pm_variant = product.selected_or_first_available_variant | default: product.variants.first
+  endif
+  assign pm_price = pm_variant.price | default: product.price
+  assign pm_compare = pm_variant.compare_at_price | default: 0
+
+  assign pm_image = product.featured_image | default: product.images.first
+
+  assign pm_tags = product.tags | join: ',' | downcase | prepend: ',' | append: ','
+  assign pm_is_new = false
+  if pm_tags contains ',new,'
+    assign pm_is_new = true
+  endif
+  assign pm_is_best = false
+  if pm_tags contains ',bestseller,'
+    assign pm_is_best = true
+  endif
+
+  assign pm_badge_count = 0
+  if product.available == false
+    assign pm_badge_count = pm_badge_count | plus: 1
+  endif
+  if pm_is_new
+    assign pm_badge_count = pm_badge_count | plus: 1
+  endif
+  if pm_is_best
+    assign pm_badge_count = pm_badge_count | plus: 1
+  endif
+
+  capture pm_inspiration
+    echo product.metafields.custom.inspiration
+  endcapture
+  assign pm_inspiration = pm_inspiration | strip
+-%}
+
+<a href="{{ product.url }}" class="pm-card pm-card--product">
+  <div class="pm-card__media">
+    {%- if pm_image -%}
+      <img
+        src="{{ pm_image | image_url: width: 540 }}"
+        srcset="{{ pm_image | image_url: width: 360 }} 360w, {{ pm_image | image_url: width: 540 }} 540w, {{ pm_image | image_url: width: 720 }} 720w"
+        sizes="(min-width: 990px) 25vw, 50vw"
+        alt="{{ pm_image.alt | default: product.title | escape }}"
+        width="{{ pm_image.width }}"
+        height="{{ pm_image.height }}"
+        {% if lazy %}loading="lazy"{% endif %}
+      >
+    {%- endif -%}
+
+    {%- capture pm_line_badge -%}
+      {%- if settings.fm_line_badge_cards != false -%}{%- render 'fm-line', product: product -%}{%- endif -%}
+    {%- endcapture -%}
+    {%- if pm_line_badge != blank -%}
+      {%- assign pm_badge_count = pm_badge_count | plus: 1 -%}
+    {%- endif -%}
+    {%- if pm_badge_count > 0 -%}
+      <div class="pm-card__badges">
+        {%- if product.available == false -%}
+          <span class="pm-badge">{{ 'products.product.sold_out' | t }}</span>
+        {%- endif -%}
+        {%- comment -%} Fragrance line badge (snippets/fm-line.liquid) replaces New / Bestseller {%- endcomment -%}
+        {%- if pm_line_badge != blank -%}
+          {{ pm_line_badge }}
+        {%- elsif pm_is_new -%}
+          <span class="pm-badge pm-badge--ink">{{ 'premium.card.new' | t }}</span>
+        {%- elsif pm_is_best -%}
+          <span class="pm-badge pm-badge--ink">{{ 'premium.card.bestseller' | t }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <span class="pm-card__quick" aria-hidden="true">
+      <span class="pm-card__quick-label">{{ 'premium.card.shop_now' | t }}</span>
+      {%- render 'pm-icon', icon: 'arrow-right', size: 16 -%}
+    </span>
+  </div>
+
+  <div class="pm-card__body">
+    <h3 class="pm-card__title">{{ product.title | escape }}</h3>
+    <span class="pm-card__rule" aria-hidden="true"></span>
+    {%- if pm_inspiration != blank -%}
+      <p class="pm-card__meta pm-dmeta">
+        {%- render 'pm-designer-thumb', product: product -%}
+        <span class="pm-dmeta__text">{{ 'premium.card.inspired_by' | t: name: pm_inspiration }}</span>
+      </p>
+    {%- endif -%}
+    <div class="pm-card__price">
+      <span class="ab-current-price">{{ pm_price | money }}</span>
+      {%- if pm_compare > pm_price -%}
+        <s class="pm-card__compare">{{ pm_compare | money }}</s>
+      {%- endif -%}
+    </div>
+  </div>
+</a>
+
+{%- if atc -%}
+  {%- assign pm_atc_form_id = 'pm-card-atc-' | append: section_id | append: '-' | append: product.id -%}
+  <product-form class="pm-card-atc" data-section-id="{{ section_id }}">
+    <div class="product-form__error-message-wrapper pm-card-atc__error" role="alert" hidden>
+      <span class="product-form__error-message"></span>
+    </div>
+    {%- form 'product', product, id: pm_atc_form_id, class: 'pm-card-atc__form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+      <input type="hidden" name="id" value="{{ pm_variant.id }}">
+      <input type="hidden" name="quantity" value="1">
+      <button
+        type="submit"
+        name="add"
+        class="pm-btn pm-btn--secondary pm-card-atc__btn"
+        {% unless pm_variant.available %}
+          disabled aria-disabled="true"
+        {% endunless %}
+        aria-label="{{ 'products.product.add_to_cart' | t | escape }}: {{ product.title | escape }}">
+        <span>
+          {%- if pm_variant.available -%}
+            {{- 'products.product.add_to_cart' | t -}}
+          {%- else -%}
+            {{- 'products.product.sold_out' | t -}}
+          {%- endif -%}
+        </span>
+        {%- render 'loading-spinner' -%}
+      </button>
+    {%- endform -%}
+  </product-form>
+{%- endif -%}

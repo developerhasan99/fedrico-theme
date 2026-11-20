@@ -1,0 +1,339 @@
+{{ 'pm-s-homepage-hero.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign hero_layout = section.settings.layout | default: 'split'
+  assign hero_tone = section.settings.text_tone | default: 'dark'
+  assign hero_mobile_buttons = section.settings.mobile_buttons | default: 'bottom'
+  assign hero_eyebrow = section.settings.eyebrow
+  if hero_eyebrow == blank
+    assign hero_eyebrow = section.settings.review_text
+  endif
+  assign hero_desktop = section.settings.background_image
+  assign hero_mobile = section.settings.mobile_background_image
+  if hero_mobile == blank
+    assign hero_mobile = hero_desktop
+  endif
+  if hero_tone == 'light'
+    assign hero_btn_class = 'pm-btn pm-btn--light pm-hero__btn'
+  else
+    assign hero_btn_class = 'pm-btn pm-btn--primary pm-hero__btn'
+  endif
+  assign hero_overlay = section.settings.overlay_opacity | divided_by: 100.0
+  assign hero_overlay_mobile = section.settings.mobile_overlay_opacity | divided_by: 100.0
+-%}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    --pm-hero-min: {{ section.settings.mobile_min_height }}px;
+    --pm-hero-overlay: {{ hero_overlay_mobile }};
+    {%- if hero_layout == 'split' and section.settings.mobile_background_image != blank %}
+    background-image: url("{{ section.settings.mobile_background_image | image_url: width: 1920 }}");
+    background-size: cover;
+    background-position: center;
+    {%- endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      --pm-hero-min: {{ section.settings.min_height }}px;
+      --pm-hero-overlay: {{ hero_overlay }};
+      {%- if hero_layout == 'split' and section.settings.background_image != blank %}
+      background-image: url("{{ section.settings.background_image | image_url: width: 1920 }}");
+      background-size: cover;
+      background-position: center;
+      {%- endif %}
+    }
+  }
+{%- endstyle -%}
+
+<div id="{{ section.id }}" class="pm-hero pm-hero--{{ hero_layout }} pm-hero--{{ hero_tone }} pm-hero--m-{{ hero_mobile_buttons }} pm-hero--am-{{ section.settings.text_align_mobile | default: 'left' }} pm-hero--ad-{{ section.settings.text_align_desktop | default: 'left' }} color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+  {%- capture hero_copy -%}
+    {%- if hero_eyebrow != blank -%}
+      <p class="pm-hero__eyebrow pm-eyebrow">
+        {%- render 'pm-stars', size: 12, class: 'pm-hero__stars' -%}
+        <span>{{ hero_eyebrow | escape }}</span>
+      </p>
+    {%- endif -%}
+    {%- if section.settings.title != blank -%}
+      <h1 class="pm-hero__title pm-display">{{ section.settings.title | escape }}</h1>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="pm-hero__subtitle pm-body-lg">{{ section.settings.subtitle | escape }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_text != blank or section.settings.secondary_button_text != blank -%}
+      <div class="pm-hero__actions">
+        {%- if section.settings.button_text != blank -%}
+          <a href="{{ section.settings.button_link }}" class="{{ hero_btn_class }}">{{ section.settings.button_text | escape }}</a>
+        {%- endif -%}
+        {%- if section.settings.secondary_button_text != blank -%}
+          <a href="{{ section.settings.secondary_button_link }}" class="{{ hero_btn_class }}">{{ section.settings.secondary_button_text | escape }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endcapture -%}
+
+  {%- if hero_layout == 'overlay' -%}
+    <div class="pm-hero__frame">
+      {%- if hero_desktop != blank -%}
+        <picture class="pm-hero__media">
+          {%- if hero_mobile != blank -%}
+            <source
+              media="(max-width: 749px)"
+              srcset="{{ hero_mobile | image_url: width: 750 }} 750w{% if hero_mobile.width >= 1125 %}, {{ hero_mobile | image_url: width: 1125 }} 1125w{% endif %}"
+              sizes="100vw"
+            >
+          {%- endif -%}
+          {{ hero_desktop | image_url: width: 1920 | image_tag: widths: '750, 1100, 1440, 1920, 2880', sizes: '100vw', class: 'pm-hero__img', loading: 'eager', fetchpriority: 'high' }}
+        </picture>
+      {%- endif -%}
+      <div class="pm-hero__overlay" aria-hidden="true"></div>
+      <div class="pm-hero__inner">
+        <div class="pm-hero__content">
+          {{ hero_copy }}
+        </div>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="page-width">
+      <div class="pm-hero__split">
+        <div class="pm-hero__content">
+          {{ hero_copy }}
+        </div>
+        <div class="pm-hero__aside">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.image | image_url: width: 900 | image_tag: widths: '450, 900', sizes: '(min-width: 750px) 450px, 100vw', class: 'pm-hero__aside-img', loading: 'eager', fetchpriority: 'high' }}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+  {
+    "name": "Homepage Hero",
+    "class": "homepage-hero",
+    "settings": [
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "options": [
+          { "value": "split", "label": "Split (copy and side image)" },
+          { "value": "overlay", "label": "Overlay (copy on a full-bleed image)" }
+        ],
+        "default": "split"
+      },
+      {
+        "type": "select",
+        "id": "text_tone",
+        "label": "Text tone",
+        "info": "Dark = ink copy and ink buttons on a light image. Light = white copy and white buttons on a dark image.",
+        "options": [
+          { "value": "dark", "label": "Dark" },
+          { "value": "light", "label": "Light" }
+        ],
+        "default": "dark"
+      },
+      {
+        "type": "select",
+        "id": "mobile_buttons",
+        "label": "Mobile buttons (overlay layout)",
+        "options": [
+          { "value": "bottom", "label": "Pinned to the bottom of the image" },
+          { "value": "inline", "label": "Directly under the copy" }
+        ],
+        "default": "bottom"
+      },
+      {
+        "type": "select",
+        "id": "text_align_mobile",
+        "label": "Text alignment on phones",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "text_align_desktop",
+        "label": "Text alignment on desktop",
+        "info": "Center works best when the product sits in the middle of the desktop image.",
+        "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "scheme-1"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "info": "Unused since the premium redesign; the colour scheme sets the background.",
+        "default": "#ffffff"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image",
+        "info": "Overlay layout: the desktop image (1440 x 560 visible area, cover). Split layout: section background."
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_background_image",
+        "label": "Mobile Background Image",
+        "info": "Overlay layout: the mobile image (375 x 560 visible area, cover). Falls back to the desktop image."
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Split layout only: the side image."
+      },
+      {
+        "type": "range",
+        "id": "overlay_opacity",
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "unit": "%",
+        "label": "Image overlay (desktop)",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "mobile_overlay_opacity",
+        "min": 0,
+        "max": 80,
+        "step": 5,
+        "unit": "%",
+        "label": "Image overlay (mobile)",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "min_height",
+        "min": 400,
+        "max": 800,
+        "step": 20,
+        "unit": "px",
+        "label": "Minimum height (desktop)",
+        "default": 560
+      },
+      {
+        "type": "range",
+        "id": "mobile_min_height",
+        "min": 400,
+        "max": 800,
+        "step": 20,
+        "unit": "px",
+        "label": "Minimum height (mobile)",
+        "default": 560
+      },
+      {
+        "type": "text",
+        "id": "eyebrow",
+        "label": "Eyebrow",
+        "info": "Shown after five stars. Falls back to Review Text when empty."
+      },
+      {
+        "type": "text",
+        "id": "review_text",
+        "label": "Review Text",
+        "default": "LOVED BY 10,000 CUSTOMERS"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Homepage Hero"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Homepage Hero"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "BUY 3 GET 1 FREE - ENDS SOON!"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "text",
+        "id": "secondary_button_text",
+        "label": "Secondary Button Text",
+        "default": "Not sure yet? Explore More"
+      },
+      {
+        "type": "url",
+        "id": "secondary_button_link",
+        "label": "Secondary Button Link"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 400,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 400,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "mobile_padding_top",
+        "min": 0,
+        "max": 400,
+        "step": 4,
+        "unit": "px",
+        "label": "Mobile Padding Top",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "mobile_padding_bottom",
+        "min": 0,
+        "max": 400,
+        "step": 4,
+        "unit": "px",
+        "label": "Mobile Padding Bottom",
+        "default": 36
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage Hero"
+      }
+    ]
+  }
+{% endschema %}

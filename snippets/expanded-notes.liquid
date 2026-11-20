@@ -1,0 +1,230 @@
+{% comment %}
+  expanded-notes: "Fragrance notes" accordion (details#expanded-notes is a JS/anchor target, keep the id).
+  Params:
+    premium: true renders a bare <details> row for a pm-accordion wrapper (editorial product page);
+             anything else keeps Dawn's product__accordion wrapper (product.json).
+  Notes come from product metafields custom.top_notes / middle_notes / base_notes (text, list or metaobject
+  shapes), falling back to the <strong>Top:</strong> / Heart: / Base: list items of the product description
+  (same parse as sections/pdp-scent-notes.liquid; every product on this store carries notes there and none
+  has the metafields yet). A tier renders only when it has text; the tier block is skipped when all three are blank.
+{% endcomment %}
+{%- liquid
+  assign notes_premium = false
+  if premium == true
+    assign notes_premium = true
+  endif
+  assign notes_panel_id = 'ProductAccordion-expanded-notes-' | append: section.id
+
+  assign note_top = ''
+  assign note_heart = ''
+  assign note_base = ''
+  assign note_top_desc = ''
+  assign note_heart_desc = ''
+  assign note_base_desc = ''
+
+  assign mf = product.metafields.custom.top_notes
+  if mf != blank
+    if mf.type contains 'list.'
+      capture note_top
+        for n in mf.value
+          echo n.heading | default: n.name | default: n
+          unless forloop.last
+            echo ', '
+          endunless
+        endfor
+      endcapture
+    elsif mf.type == 'metaobject_reference'
+      assign note_top = mf.value.heading | default: mf.value.name
+      assign note_top_desc = mf.value.description | metafield_text
+    else
+      assign note_top = mf.value | strip_html
+    endif
+  endif
+
+  assign mf = product.metafields.custom.middle_notes
+  if mf != blank
+    if mf.type contains 'list.'
+      capture note_heart
+        for n in mf.value
+          echo n.heading | default: n.name | default: n
+          unless forloop.last
+            echo ', '
+          endunless
+        endfor
+      endcapture
+    elsif mf.type == 'metaobject_reference'
+      assign note_heart = mf.value.heading | default: mf.value.name
+      assign note_heart_desc = mf.value.description | metafield_text
+    else
+      assign note_heart = mf.value | strip_html
+    endif
+  endif
+
+  assign mf = product.metafields.custom.base_notes
+  if mf != blank
+    if mf.type contains 'list.'
+      capture note_base
+        for n in mf.value
+          echo n.heading | default: n.name | default: n
+          unless forloop.last
+            echo ', '
+          endunless
+        endfor
+      endcapture
+    elsif mf.type == 'metaobject_reference'
+      assign note_base = mf.value.heading | default: mf.value.name
+      assign note_base_desc = mf.value.description | metafield_text
+    else
+      assign note_base = mf.value | strip_html
+    endif
+  endif
+
+  assign note_top = note_top | strip
+  assign note_heart = note_heart | strip
+  assign note_base = note_base | strip
+  assign note_top_desc = note_top_desc | strip
+  assign note_heart_desc = note_heart_desc | strip
+  assign note_base_desc = note_base_desc | strip
+
+  if product.description contains '<strong>'
+    assign desc_parts = product.description | split: '<strong>'
+    for part in desc_parts
+      assign head = part | split: '</strong>' | first | strip_html | strip | downcase | replace: ' notes', '' | replace: ':', ''
+      assign body = part | split: '</strong>' | last | split: '</li>' | first | split: '<br' | first | split: '</p>' | first | strip_html | strip
+      if body == blank
+        continue
+      endif
+      if head == 'top' and note_top == blank
+        assign note_top = body
+      elsif head == 'heart' and note_heart == blank
+        assign note_heart = body
+      elsif head == 'middle' and note_heart == blank
+        assign note_heart = body
+      elsif head == 'base' and note_base == blank
+        assign note_base = body
+      endif
+    endfor
+  endif
+
+  assign has_tiers = false
+  if note_top != blank or note_heart != blank or note_base != blank
+    assign has_tiers = true
+  endif
+-%}
+{%- unless notes_premium -%}
+<div class="product__accordion accordion quick-add-hidden">
+{%- endunless -%}
+    <details id="expanded-notes"{% if notes_premium %} class="pm-accordion__item quick-add-hidden"{% endif %}>
+        <summary aria-controls="{{ notes_panel_id }}">
+            {%- if notes_premium -%}
+                <h2 class="pm-accordion__title">Fragrance notes</h2>
+            {%- else -%}
+                <div class="summary__title">
+                    <span class="svg-wrapper"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="icon icon-accordion icon-clipboard" viewBox="0 0 20 20"><path d="M6.311 9.136a.25.25 0 0 1 .25-.25h7.185a.25.25 0 0 1 0 .5H6.561a.25.25 0 0 1-.25-.25M6.311 14.054a.25.25 0 0 1 .25-.25h6.878a.25.25 0 0 1 0 .5H6.561a.25.25 0 0 1-.25-.25M6.926 11.595a.25.25 0 0 1 .25-.25h5.648a.25.25 0 1 1 0 .5H7.176a.25.25 0 0 1-.25-.25M5.196 1.778a1.5 1.5 0 0 1 1.5-1.5h6.608a1.5 1.5 0 0 1 1.5 1.5v1.69a1.5 1.5 0 0 1-1.5 1.5H6.696a1.5 1.5 0 0 1-1.5-1.5zm1.5-.5a.5.5 0 0 0-.5.5v1.69a.5.5 0 0 0 .5.5h6.608a.5.5 0 0 0 .5-.5v-1.69a.5.5 0 0 0-.5-.5z"></path><path d="M3.737 2.508v16.215h12.526V2.508h-1.765v-1h1.765a1 1 0 0 1 1 1v16.215a1 1 0 0 1-1 1H3.737a1 1 0 0 1-1-1V2.508a1 1 0 0 1 1-1H5.76v1z"></path></svg></span>
+                    <h2 class="h4 accordion__title inline-richtext font-bold tracking-normal text-sm md:text-base">
+                        Fragrance notes
+                    </h2>
+                </div>
+                <div class="svg-wrapper bg-black text-white !size-6 p-1 rounded-full !mr-0 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" class="icon icon-plus" viewBox="0 0 10 10"><path fill="currentColor" fill-rule="evenodd" d="M1 4.51a.5.5 0 0 0 0 1h3.5l.01 3.5a.5.5 0 0 0 1-.01V5.5l3.5-.01a.5.5 0 0 0-.01-1H5.5L5.49.99a.5.5 0 0 0-1 .01v3.5l-3.5.01z" clip-rule="evenodd"></path></svg>
+                </div>
+            {%- endif -%}
+        </summary>
+        <div class="{% if notes_premium %}pm-accordion__content{% else %}accordion__content{% endif %} rte" id="{{ notes_panel_id }}">
+            <div class="scent-notes-panel pm-notes">
+                {%- if product.metafields.custom.main_notes.value != blank -%}
+                <div class="pm-notes__main">
+                    <p class="pm-notes__caption">Main notes</p>
+                    <div class="pm-notes__row">
+                        {% for note in product.metafields.custom.main_notes.value %}
+                            <figure class="pm-notes__figure">
+                                <img src="{{ note.icon | image_url: width: 64 }}" alt="{{ note.name | escape }}" width="34" height="34" loading="lazy">
+                                <figcaption>{{ note.name }}</figcaption>
+                            </figure>
+                        {% endfor %}
+                    </div>
+                </div>
+                {%- endif -%}
+
+                {%- if has_tiers -%}
+                <div class="pm-notes__tiers">
+                    {%- if note_top != blank -%}
+                    <div class="pm-notes__tier">
+                    <svg width="20" height="28" viewBox="0 0 20 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <rect x="8" y="2" width="4" height="3" rx="0.5"></rect>
+                        <path d="M7 5 h6 v2 h-6 z"></path>
+                        <rect x="4" y="7" width="12" height="18" rx="2"></rect>
+                    </svg>
+                    <div class="min-w-0">
+                        <p><strong>{{ 'premium.pdp.top' | t }}:</strong> {{ note_top }}</p>
+                        {%- if note_top_desc != blank -%}
+                        <p>{{ note_top_desc }}</p>
+                        {%- endif -%}
+                    </div>
+                    </div>
+                    {%- endif -%}
+
+                    {%- if note_heart != blank -%}
+                    <div class="pm-notes__tier">
+                    <svg width="20" height="28" viewBox="0 0 20 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <rect x="8" y="2" width="4" height="3" rx="0.5"></rect>
+                        <path d="M7 5 h6 v2 h-6 z"></path>
+                        <rect x="4" y="7" width="12" height="18" rx="2"></rect>
+                        <rect x="4" y="14" width="12" height="11" rx="2" fill="currentColor" fill-opacity="0.2"></rect>
+                    </svg>
+                    <div class="min-w-0">
+                        <p><strong>{{ 'premium.pdp.heart' | t }}:</strong> {{ note_heart }}</p>
+                        {%- if note_heart_desc != blank -%}
+                        <p>{{ note_heart_desc }}</p>
+                        {%- endif -%}
+                    </div>
+                    </div>
+                    {%- endif -%}
+
+                    {%- if note_base != blank -%}
+                    <div class="pm-notes__tier">
+                    <svg width="20" height="28" viewBox="0 0 20 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <rect x="8" y="2" width="4" height="3" rx="0.5"></rect>
+                        <path d="M7 5 h6 v2 h-6 z"></path>
+                        <rect x="4" y="7" width="12" height="18" rx="2"></rect>
+                        <rect x="4" y="7" width="12" height="18" rx="2" fill="currentColor" fill-opacity="0.35"></rect>
+                    </svg>
+                    <div class="min-w-0">
+                        <p><strong>{{ 'premium.pdp.base' | t }}:</strong> {{ note_base }}</p>
+                        {%- if note_base_desc != blank -%}
+                        <p>{{ note_base_desc }}</p>
+                        {%- endif -%}
+                    </div>
+                    </div>
+                    {%- endif -%}
+                </div>
+                {%- endif -%}
+
+                <p class="pm-notes__ingredients">
+                    <strong>Ingredients:</strong>
+                    {% if product.metafields.custom.ingredients.value != blank %}
+                    {{ product.metafields.custom.ingredients.value | metafield_text }}
+                    {% else %}
+                        Alcohol denat., parfum (fragrance), aqua (water), limonene, linalool, citronellol, geraniol, citral, benzyl salicylate, coumarin, alpha-isomethyl ionone, hexyl cinnamal, benzyl benzoate.
+                    {% endif %}
+                </p>
+
+                <div class="pm-notes__tags">
+                    <span class="pm-notes__tag">
+                    {% render 'pm-icon', icon: 'leaf', size: 14, stroke: 1.5 %}
+                    Vegan
+                    </span>
+                    <span class="pm-notes__tag">
+                    {% render 'pm-icon', icon: 'heart', size: 14, stroke: 1.5 %}
+                    Cruelty-free
+                    </span>
+                    <span class="pm-notes__tag">
+                    {% render 'pm-icon', icon: 'check', size: 14, stroke: 1.5 %}
+                    Clean ingredients
+                    </span>
+                </div>
+            </div>
+        </div>
+    </details>
+{%- unless notes_premium -%}
+</div>
+{%- endunless -%}

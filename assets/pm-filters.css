@@ -1,0 +1,457 @@
+/* pm-filters.css: "Filter and sort" pill + drawer of the collection toolbar (snippets/pm-filters.liquid,
+   assets/pm-filters.js), modelled on magyx.co (assets/mgx-filters.css) in premium tokens, monochrome.
+   375: full-width 54px pill above the search field, full-screen drawer. From 750: the pill as wide as the
+   search field (460px, centred), the drawer a 420px panel from the right over a dimmed page.
+   Every selector starts with .premium; closed parts use [hidden]. */
+
+.premium .pm-filters__drawer[hidden],
+.premium .pm-filters__compat {
+  display: none;
+}
+
+/* The toolbar is a positioned layer (z-index 2, assets/pm-collection.css) under the sticky header (3);
+   while the drawer is open it rises above everything so the fixed drawer covers the header too. */
+.premium .pm-ctoolbar.is-filters-open {
+  z-index: 1000;
+}
+
+.premium.pm-filters-lock {
+  overflow: hidden;
+}
+
+/* Pill */
+.premium .pm-filters__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 460px;
+  height: 54px;
+  margin: 0 auto;
+  padding: 0 20px;
+  border: 1px solid var(--pm-ink);
+  border-radius: var(--pm-radius-pill);
+  background: var(--pm-white);
+  color: var(--pm-ink);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--pm-dur) var(--pm-ease);
+}
+
+.premium .pm-filters__trigger:hover {
+  background: var(--pm-surface);
+}
+
+.premium .pm-filters__trigger:focus-visible,
+.premium .pm-filters__x:focus-visible,
+.premium .pm-filters__apply:focus-visible,
+.premium .pm-filters__clear:focus-visible,
+.premium .pm-filters__summary:focus-visible,
+.premium .pm-filters__check:focus-visible {
+  outline: 2px solid var(--pm-ink);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.premium .pm-filters__trigger-ico {
+  flex: none;
+  display: block;
+}
+
+.premium .pm-filters__badge {
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.premium .pm-filters__badge:empty {
+  display: none;
+}
+
+/* Drawer: fixed layer over the page (and the header) */
+.premium .pm-filters__drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  text-align: left;
+}
+
+/* display: Dawn's base.css hides every empty div */
+.premium .pm-filters__overlay {
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  animation: pm-filters-fade var(--pm-dur) var(--pm-ease);
+}
+
+.premium .pm-filters__sheet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background: var(--pm-white);
+  color: var(--pm-ink);
+  animation: pm-filters-in var(--pm-dur) var(--pm-ease-drawer);
+}
+
+@keyframes pm-filters-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pm-filters-in {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+}
+
+.premium .pm-filters__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  min-height: 56px;
+  padding: env(safe-area-inset-top, 0px) 6px 0 20px;
+  border-bottom: 1px solid var(--pm-line);
+}
+
+.premium .pm-filters__title {
+  margin: 0;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pm-ink);
+}
+
+.premium .pm-filters__x {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--pm-ink);
+  cursor: pointer;
+}
+
+.premium .pm-filters__form-wrap {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.premium .pm-filters__body {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0 20px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Groups: accordions, + / - on the right */
+.premium .pm-filters__acc {
+  border-bottom: 1px solid var(--pm-line);
+}
+
+.premium .pm-filters__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 60px;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--pm-ink);
+  list-style: none;
+  cursor: pointer;
+}
+
+.premium .pm-filters__summary::-webkit-details-marker {
+  display: none;
+}
+
+.premium .pm-filters__summary::after {
+  content: '+';
+  flex: none;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.premium .pm-filters__acc[open] > .pm-filters__summary::after {
+  content: '\2212';
+}
+
+.premium .pm-filters__sel {
+  margin-left: 6px;
+  font-weight: 400;
+  color: var(--pm-muted);
+}
+
+.premium .pm-filters__list {
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 14px;
+  border: 0;
+}
+
+.premium .pm-filters__opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--pm-ink);
+  cursor: pointer;
+}
+
+.premium .pm-filters__opt.is-active {
+  font-weight: 500;
+}
+
+.premium .pm-filters__opt.is-off {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.premium .pm-filters__label {
+  flex: 0 1 auto;
+}
+
+.premium .pm-filters__n {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--pm-muted);
+}
+
+/* 20px boxes, 1px ink, ink with a white check when ticked; the sort radios are round */
+.premium .pm-filters__check {
+  position: static;
+  flex: none;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--pm-ink);
+  border-radius: 2px;
+  background-color: var(--pm-white);
+  cursor: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.premium .pm-filters__check:checked {
+  background-color: var(--pm-ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5l3 3 6-7'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+}
+
+.premium .pm-filters__check.pm-filters__check--radio {
+  border-radius: 50%;
+}
+
+.premium .pm-filters__check.pm-filters__check--radio:checked {
+  background-image: none;
+  box-shadow: inset 0 0 0 4px var(--pm-white);
+}
+
+/* Price: highest-price note, then From / To fields with the currency inside */
+.premium .pm-filters__price {
+  padding: 0 0 18px;
+}
+
+.premium .pm-filters__note {
+  margin: 0 0 12px;
+  font-size: var(--pm-fs-small);
+  line-height: var(--pm-lh-small);
+  color: var(--pm-muted);
+}
+
+.premium .pm-filters__price-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.premium .pm-filters__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+}
+
+.premium .pm-filters__field-label {
+  font-size: var(--pm-fs-small);
+  line-height: 16px;
+  color: var(--pm-muted);
+}
+
+.premium .pm-filters__input-wrap {
+  position: relative;
+  display: block;
+}
+
+.premium .pm-filters__cur {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--pm-muted);
+  pointer-events: none;
+}
+
+/* Phones type at 16px so iOS does not zoom the page on focus */
+.premium .pm-filters__input.pm-filters__input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  min-height: 0;
+  margin: 0;
+  padding: 0 12px 0 32px;
+  border: 1px solid var(--pm-line);
+  border-radius: var(--pm-radius-sm);
+  background: var(--pm-white);
+  box-shadow: none;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--pm-ink);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.premium .pm-filters__input.pm-filters__input:focus {
+  border-color: var(--pm-ink);
+  outline: 0;
+  box-shadow: none;
+}
+
+/* Footer: Apply (result count), then "Remove all" once anything is picked */
+.premium .pm-filters__foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: none;
+  gap: 4px;
+  padding: 16px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--pm-line);
+  background: var(--pm-white);
+}
+
+.premium .pm-filters__apply {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 54px;
+  margin: 0;
+  padding: 0 20px;
+  border: 1px solid var(--pm-black);
+  border-radius: var(--pm-radius-pill);
+  background: var(--pm-black);
+  color: var(--pm-white);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--pm-dur) var(--pm-ease), color var(--pm-dur) var(--pm-ease);
+}
+
+.premium .pm-filters__apply:hover {
+  background: var(--pm-charcoal);
+}
+
+.premium .pm-filters__clear-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.premium .pm-filters__clear-wrap:empty {
+  display: none;
+}
+
+.premium .pm-filters__clear {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 8px;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--pm-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 750px) {
+  .premium .pm-filters__sheet {
+    width: 420px;
+    max-width: calc(100vw - 48px);
+    box-shadow: var(--pm-shadow-float);
+  }
+
+  .premium .pm-filters__head {
+    padding-left: 24px;
+  }
+
+  .premium .pm-filters__body {
+    padding: 0 24px;
+  }
+
+  .premium .pm-filters__foot {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .premium .pm-filters__opt {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium .pm-filters__overlay,
+  .premium .pm-filters__sheet {
+    animation: none;
+  }
+}

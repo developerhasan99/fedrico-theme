@@ -1,0 +1,381 @@
+{%- comment -%}
+  pdp-scent-notes (WP-C2): black band with TOP / HEART / BASE tiles and an attribute row.
+  Notes come from product metafields custom.top_notes / middle_notes / base_notes (text, list or metaobject shapes),
+  falling back to the <strong>Top:</strong> / Heart: / Base: list items of the product description when
+  "fallback_description" is on (every product on this store carries notes there and none has the metafields yet).
+  Renders nothing on the storefront when all three notes are blank; the theme editor shows a placeholder.
+{%- endcomment -%}
+{%- liquid
+  assign note_top = ''
+  assign note_heart = ''
+  assign note_base = ''
+
+  assign mf = product.metafields.custom.top_notes
+  if mf != blank
+    if mf.type contains 'list.'
+      capture note_top
+        for n in mf.value
+          echo n.heading | default: n.name | default: n
+          unless forloop.last
+            echo ', '
+          endunless
+        endfor
+      endcapture
+    elsif mf.type == 'metaobject_reference'
+      assign note_top = mf.value.heading | default: mf.value.name
+    else
+      assign note_top = mf.value | strip_html
+    endif
+  endif
+
+  assign mf = product.metafields.custom.middle_notes
+  if mf != blank
+    if mf.type contains 'list.'
+      capture note_heart
+        for n in mf.value
+          echo n.heading | default: n.name | default: n
+          unless forloop.last
+            echo ', '
+          endunless
+        endfor
+      endcapture
+    elsif mf.type == 'metaobject_reference'
+      assign note_heart = mf.value.heading | default: mf.value.name
+    else
+      assign note_heart = mf.value | strip_html
+    endif
+  endif
+
+  assign mf = product.metafields.custom.base_notes
+  if mf != blank
+    if mf.type contains 'list.'
+      capture note_base
+        for n in mf.value
+          echo n.heading | default: n.name | default: n
+          unless forloop.last
+            echo ', '
+          endunless
+        endfor
+      endcapture
+    elsif mf.type == 'metaobject_reference'
+      assign note_base = mf.value.heading | default: mf.value.name
+    else
+      assign note_base = mf.value | strip_html
+    endif
+  endif
+
+  assign note_top = note_top | strip
+  assign note_heart = note_heart | strip
+  assign note_base = note_base | strip
+
+  if section.settings.fallback_description and product.description contains '<strong>'
+    assign desc_parts = product.description | split: '<strong>'
+    for part in desc_parts
+      assign head = part | split: '</strong>' | first | strip_html | strip | downcase | replace: ' notes', '' | replace: ':', ''
+      assign body = part | split: '</strong>' | last | split: '</li>' | first | split: '<br' | first | split: '</p>' | first | strip_html | strip
+      if body == blank
+        continue
+      endif
+      if head == 'top' and note_top == blank
+        assign note_top = body
+      elsif head == 'heart' and note_heart == blank
+        assign note_heart = body
+      elsif head == 'middle' and note_heart == blank
+        assign note_heart = body
+      elsif head == 'base' and note_base == blank
+        assign note_base = body
+      endif
+    endfor
+  endif
+
+  # Tile per layer: ingredient linked on the product (custom.note_top / note_middle / note_base),
+  # else the "notes" library entry matching the first ingredient, else the section image.
+  assign tile_top = product.metafields.custom.note_top.value
+  assign tile_top_name = note_top | split: ',' | first | split: ' & ' | first | split: ' and ' | first | strip
+  if tile_top == blank and tile_top_name != blank
+    assign tile_handle = tile_top_name | handleize
+    assign tile_top = metaobjects.notes[tile_handle]
+  endif
+  if tile_top.name.value != blank
+    assign tile_top_name = tile_top.name.value
+  endif
+  assign tile_top_img = tile_top.icon.value | default: section.settings.image_top
+
+  assign tile_heart = product.metafields.custom.note_middle.value
+  assign tile_heart_name = note_heart | split: ',' | first | split: ' & ' | first | split: ' and ' | first | strip
+  if tile_heart == blank and tile_heart_name != blank
+    assign tile_handle = tile_heart_name | handleize
+    assign tile_heart = metaobjects.notes[tile_handle]
+  endif
+  if tile_heart.name.value != blank
+    assign tile_heart_name = tile_heart.name.value
+  endif
+  assign tile_heart_img = tile_heart.icon.value | default: section.settings.image_heart
+
+  assign tile_base = product.metafields.custom.note_base.value
+  assign tile_base_name = note_base | split: ',' | first | split: ' & ' | first | split: ' and ' | first | strip
+  if tile_base == blank and tile_base_name != blank
+    assign tile_handle = tile_base_name | handleize
+    assign tile_base = metaobjects.notes[tile_handle]
+  endif
+  if tile_base.name.value != blank
+    assign tile_base_name = tile_base.name.value
+  endif
+  assign tile_base_img = tile_base.icon.value | default: section.settings.image_base
+
+  assign has_notes = false
+  if note_top != blank or note_heart != blank or note_base != blank
+    assign has_notes = true
+  endif
+
+  assign attr_family = ''
+  assign mf = product.metafields.custom.fragrance_family
+  if mf != blank
+    if mf.type contains 'list.'
+      assign attr_family = mf.value | join: ', '
+    else
+      assign attr_family = mf.value
+    endif
+  endif
+
+  assign attr_occasion = ''
+  assign mf = product.metafields.custom.occasion
+  if mf != blank
+    if mf.type contains 'list.'
+      assign attr_occasion = mf.value | join: ', '
+    else
+      assign attr_occasion = mf.value
+    endif
+  endif
+
+  assign attr_season = ''
+  assign mf = product.metafields.custom.season
+  if mf == blank
+    assign mf = product.metafields.custom.wearing_season
+  endif
+  if mf != blank
+    if mf.type contains 'list.'
+      assign attr_season = mf.value | join: ', '
+    else
+      assign attr_season = mf.value
+    endif
+  endif
+
+  assign attr_intensity = ''
+  assign intensity_level = 0
+  assign mf = product.metafields.custom.scent_intensity
+  if mf != blank
+    assign attr_intensity = mf.value
+    assign intensity_level = mf.value | times: 1
+    if intensity_level > 3
+      assign intensity_level = 0
+    endif
+  endif
+
+  assign has_attrs = false
+  if section.settings.show_attributes
+    if attr_family != blank or attr_occasion != blank or attr_season != blank or attr_intensity != blank
+      assign has_attrs = true
+    endif
+  endif
+
+  assign label_top = section.settings.label_top
+  if label_top == blank
+    assign label_top = 'premium.pdp.top' | t
+  endif
+  assign label_heart = section.settings.label_heart
+  if label_heart == blank
+    assign label_heart = 'premium.pdp.heart' | t
+  endif
+  assign label_base = section.settings.label_base
+  if label_base == blank
+    assign label_base = 'premium.pdp.base' | t
+  endif
+  assign heading = section.settings.heading
+  if heading == blank
+    assign heading = 'premium.pdp.scent_notes' | t
+  endif
+-%}
+{%- if has_notes or request.design_mode -%}
+  {{ 'pm-s-pdp-scent-notes.css' | asset_url | stylesheet_tag }}
+  {%- style -%}
+    .premium .pm-scent--{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 990px) {
+      .premium .pm-scent--{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+  <div class="pm-scent pm-scent--{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+    <div class="pm-scent__inner">
+      {%- if has_notes -%}
+        <h2 class="pm-h2 pm-scent__heading">{{ heading }}</h2>
+        <ul class="pm-scent__tiles" role="list">
+          {%- if note_top != blank -%}
+            {%- render 'pm-scent-tile', label: label_top, name: tile_top_name, image: tile_top_img -%}
+          {%- endif -%}
+          {%- if note_heart != blank -%}
+            {%- render 'pm-scent-tile', label: label_heart, name: tile_heart_name, image: tile_heart_img -%}
+          {%- endif -%}
+          {%- if note_base != blank -%}
+            {%- render 'pm-scent-tile', label: label_base, name: tile_base_name, image: tile_base_img -%}
+          {%- endif -%}
+        </ul>
+        {%- if has_attrs -%}
+          <dl class="pm-scent__attrs">
+            {%- if attr_family != blank -%}
+              <div class="pm-scent__attr">
+                <dt class="pm-scent__attr-label">{{ 'premium.pdp.family' | t }}</dt>
+                <dd class="pm-scent__attr-value">{{ attr_family }}</dd>
+              </div>
+            {%- endif -%}
+            {%- if attr_occasion != blank -%}
+              <div class="pm-scent__attr">
+                <dt class="pm-scent__attr-label">{{ 'premium.pdp.occasion' | t }}</dt>
+                <dd class="pm-scent__attr-value">{{ attr_occasion }}</dd>
+              </div>
+            {%- endif -%}
+            {%- if attr_season != blank -%}
+              <div class="pm-scent__attr">
+                <dt class="pm-scent__attr-label">{{ 'premium.pdp.season' | t }}</dt>
+                <dd class="pm-scent__attr-value">{{ attr_season }}</dd>
+              </div>
+            {%- endif -%}
+            {%- if attr_intensity != blank -%}
+              <div class="pm-scent__attr">
+                <dt class="pm-scent__attr-label">{{ 'premium.pdp.intensity' | t }}</dt>
+                <dd class="pm-scent__attr-value">
+                  {%- if intensity_level >= 1 -%}
+                    <span class="pm-scent__dots" role="img" aria-label="{{ attr_intensity }}">
+                      {%- for i in (1..3) -%}
+                        <span class="pm-scent__dot{% if i <= intensity_level %} is-on{% endif %}"></span>
+                      {%- endfor -%}
+                    </span>
+                  {%- else -%}
+                    {{ attr_intensity }}
+                  {%- endif -%}
+                </dd>
+              </div>
+            {%- endif -%}
+          </dl>
+        {%- endif -%}
+      {%- else -%}
+        <p class="pm-scent__placeholder pm-small">Scent notes: this product has no top, heart or base notes yet (metafields custom.top_notes / middle_notes / base_notes or a Top / Heart / Base list in the description). The section stays hidden on the storefront until it does.</p>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Scent notes",
+  "tag": "section",
+  "class": "pm-scent-section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-4"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Scent notes"
+    },
+    {
+      "type": "header",
+      "content": "Tiles"
+    },
+    {
+      "type": "text",
+      "id": "label_top",
+      "label": "Top label",
+      "info": "Blank = Top"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_top",
+      "label": "Top image (optional, 30% dark overlay)"
+    },
+    {
+      "type": "text",
+      "id": "label_heart",
+      "label": "Heart label",
+      "info": "Blank = Heart"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_heart",
+      "label": "Heart image (optional)"
+    },
+    {
+      "type": "text",
+      "id": "label_base",
+      "label": "Base label",
+      "info": "Blank = Base"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_base",
+      "label": "Base image (optional)"
+    },
+    {
+      "type": "checkbox",
+      "id": "fallback_description",
+      "label": "Read notes from the product description when the metafields are empty",
+      "info": "Uses the Top / Heart / Base list items of the description.",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Attributes"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_attributes",
+      "label": "Show family, occasion, season and intensity",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "info": "Half of this value below 990px.",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scent notes"
+    }
+  ]
+}
+{% endschema %}

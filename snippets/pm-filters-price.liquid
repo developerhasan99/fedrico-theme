@@ -1,0 +1,59 @@
+{% comment %}
+  From / To fields of a price_range filter in the "Filter and sort" drawer (snippets/pm-filters.liquid),
+  in the shopper's currency. Dawn's <price-range> (assets/facets.js) keeps the two values inside
+  0 and the highest price; facets.js applies them while typing (debounced). No .facets-wrap here on
+  purpose: facets.js would swap the fields under the shopper's caret after every render.
+
+  Accepts:
+  - filter: {Object} a filter of type price_range
+  - section_id: {String} section.id of the grid section
+{% endcomment %}
+{%- liquid
+  assign max_price_amount = filter.range_max | money | strip_html | escape
+  assign field_id = 'PmFilter-' | append: filter.param_name | escape | append: '-' | append: section_id
+-%}
+<div class="pm-filters__price">
+  <p class="pm-filters__note">{{ 'products.facets.max_price' | t: price: max_price_amount }}</p>
+  <price-range class="pm-filters__price-row">
+    <label class="pm-filters__field" for="{{ field_id }}-GTE">
+      <span class="pm-filters__field-label">{{ 'products.facets.from' | t }}</span>
+      <span class="pm-filters__input-wrap">
+        <span class="pm-filters__cur" aria-hidden="true">{{ cart.currency.symbol }}</span>
+        <input
+          class="pm-filters__input"
+          name="{{ filter.min_value.param_name }}"
+          id="{{ field_id }}-GTE"
+          {%- if filter.min_value.value != null %}
+            value="{{ filter.min_value.value | money_without_currency }}"
+          {%- endif %}
+          type="text"
+          inputmode="decimal"
+          autocomplete="off"
+          placeholder="0"
+          data-pattern="\d| |,|\."
+          data-min="0"
+          data-max="{{ filter.range_max | money_without_currency }}">
+      </span>
+    </label>
+    <label class="pm-filters__field" for="{{ field_id }}-LTE">
+      <span class="pm-filters__field-label">{{ 'products.facets.to' | t }}</span>
+      <span class="pm-filters__input-wrap">
+        <span class="pm-filters__cur" aria-hidden="true">{{ cart.currency.symbol }}</span>
+        <input
+          class="pm-filters__input"
+          name="{{ filter.max_value.param_name }}"
+          id="{{ field_id }}-LTE"
+          {%- if filter.max_value.value != null %}
+            value="{{ filter.max_value.value | money_without_currency }}"
+          {%- endif %}
+          type="text"
+          inputmode="decimal"
+          autocomplete="off"
+          placeholder="{{ filter.range_max | money_without_currency }}"
+          data-pattern="\d| |,|\."
+          data-min="0"
+          data-max="{{ filter.range_max | money_without_currency }}">
+      </span>
+    </label>
+  </price-range>
+</div>

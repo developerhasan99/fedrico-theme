@@ -1,0 +1,155 @@
+{{ 'pm-s-popular-products.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    {%- if section.settings.background_image != blank %}
+    background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');
+    background-size: cover;
+    background-position: center;
+    {%- endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div id="{{ section.id }}" class="pm-popular color-{{ section.settings.color_scheme }} section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="pm-popular__head">
+      <h2 class="pm-popular__title pm-title">{{ section.settings.title | escape }}</h2>
+      {%- if section.settings.button_text != blank and section.settings.button_link != blank -%}
+        <a href="{{ section.settings.button_link }}" class="pm-btn pm-btn--link pm-popular__link">{{ section.settings.button_text | escape }}</a>
+      {%- endif -%}
+    </div>
+    {%- if section.settings.description != blank -%}
+      <div class="pm-popular__desc pm-body-lg pm-muted">{{ section.settings.description }}</div>
+    {%- endif -%}
+    <div class="pm-popular__slider swiper" id="slider-{{ section.id }}">
+      <div class="swiper-wrapper">
+        {%- for product in section.settings.collection.products limit: 8 -%}
+          <div class="swiper-slide pm-popular__slide">
+            {%- render 'product-card', product: product -%}
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="pm-popular__nav">
+        <button type="button" class="swiper-button-prev pm-popular__arrow" aria-label="{{ 'premium.general.previous' | t }}"></button>
+        <button type="button" class="swiper-button-next pm-popular__arrow" aria-label="{{ 'premium.general.next' | t }}"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper === 'undefined') return;
+    new Swiper('#slider-{{ section.id }}', {
+      slidesPerView: 1.25,
+      spaceBetween: 12,
+      slidesOffsetBefore: 20,
+      slidesOffsetAfter: 20,
+      watchOverflow: true,
+      navigation: {
+        nextEl: '#slider-{{ section.id }} .swiper-button-next',
+        prevEl: '#slider-{{ section.id }} .swiper-button-prev'
+      },
+      breakpoints: {
+        750: { slidesPerView: 2.2, spaceBetween: 20, slidesOffsetBefore: 0, slidesOffsetAfter: 0 },
+        990: { slidesPerView: 3, spaceBetween: 20, slidesOffsetBefore: 0, slidesOffsetAfter: 0 },
+        1200: { slidesPerView: 4, spaceBetween: 20, slidesOffsetBefore: 0, slidesOffsetAfter: 0 }
+      }
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Popular Products",
+    "class": "popular-products",
+    "settings": [
+      {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "scheme-1"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "info": "Unused since the premium redesign; the colour scheme sets the background.",
+        "default": "#ffffff"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Popular Products"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "info": "Shown as a text link next to the title.",
+        "default": "View All"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "header",
+        "content": "Section Padding"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "info": "Mobile uses half of this value.",
+        "default": 36
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "info": "Mobile uses half of this value.",
+        "default": 36
+      }
+    ],
+    "presets": [
+      {
+        "name": "Popular Products"
+      }
+    ]
+  }
+{% endschema %}
