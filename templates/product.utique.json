@@ -36,7 +36,7 @@
         "custom_liquid_7fWyxx": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'quantity-breaker' %}"
+            "custom_liquid": "{% render 'quantity-breaker', size_hint: '80% of our customers choose 100 ml' %}"
           }
         },
         "atc_bundle_builder_aLJUaV": {

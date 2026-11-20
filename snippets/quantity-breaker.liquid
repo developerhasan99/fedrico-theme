@@ -68,7 +68,10 @@
     {% comment %} Size selector (50 / 100 ml) {% endcomment %}
     <div class="pm-size-head">
       <span class="pm-eyebrow pm-size-head__label" id="pm-size-label-{{ section.id }}">{{ 'premium.pdp.size' | t }}</span>
-      <span class="pm-size-head__hint">{{ 'premium.pdp.size_hint' | t }}</span>
+      {%- comment -%} size_hint: optional override, e.g. {% render 'quantity-breaker', size_hint: '...' %}; blank = hide {%- endcomment -%}
+      {%- assign qb_size_hint = 'premium.pdp.size_hint' | t -%}
+      {%- if size_hint != nil -%}{%- assign qb_size_hint = size_hint -%}{%- endif -%}
+      {%- if qb_size_hint != blank -%}<span class="pm-size-head__hint">{{ qb_size_hint }}</span>{%- endif -%}
     </div>
 
     <div class="pm-sizes" id="variant-selector" role="group" aria-labelledby="pm-size-label-{{ section.id }}">
