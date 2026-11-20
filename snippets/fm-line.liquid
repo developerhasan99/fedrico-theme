@@ -61,6 +61,15 @@
     assign fl_strength = fl.strength.value | default: 0
   endif
 
+  # Utique template = strongest line: 35% oil, 12+ hours, 3 dots, whatever the tags say
+  if product.template_suffix == 'utique' and product.gift_card? == false
+    assign fl = true
+    assign fl_name = 'Utique'
+    assign fl_oil = '35%'
+    assign fl_hours = '12+ hours'
+    assign fl_strength = 3
+  endif
+
   if fl_mode == 'text'
     if fl_has_token == false
       echo text
