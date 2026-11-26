@@ -76,15 +76,20 @@
       var p = it.properties || {};
       var gift = p._free_product;
       if (gift !== undefined && gift !== null && gift !== '' && String(gift) !== 'false') return;
+      // Theme gifts (tag pm-cart-gift, priced 0), Bundle & Save line upgrades (_bundle_per: they price bottles the
+      // bundle line already counts) and lines that ship nothing are not bottles.
+      if (it.gift === true || /^gift$/i.test(it.product_type || '') || it.original_price === 0) return;
+      if (p._bundle_per || it.requires_shipping === false) return;
       var q = Number(it.quantity) || 0;
       if (p._bundle_items) {
         count += String(p._bundle_items).split(',').filter(function (x) { return x.trim(); }).length * q;
         return;
       }
+      // Every other line is a bottle: product names carry no size ("Laurel Vanilla", "Default Title").
+      // Packs count their bottles: "6 x 50 ml", "3 Bottles".
       var text = [it.variant_title, it.product_title, it.title].join(' ');
-      var box = /(\d+)\s*[x×]\s*\d+\s*ml/i.exec(text);
-      if (box) count += parseInt(box[1], 10) * q;
-      else if (/\d\s*ml\b/i.test(text)) count += q;
+      var box = /(\d+)\s*[x×]\s*\d+\s*ml/i.exec(text) || /(\d+)\s*bottles?\b/i.exec(text);
+      count += (box ? parseInt(box[1], 10) : 1) * q;
     });
     return count;
   }
